@@ -45,7 +45,7 @@ const AnimatedText = ({ text, delay, className, x, y }) => {
                     >
                         {char}
                     </motion.span>) :
-                <span>{" "}</span>
+                <span key={index}>{" "}</span>
             ))}
         </motion.div>
     );

@@ -1,18 +1,17 @@
 import { motion } from 'framer-motion';
 import AnimatedText from './AnimatedText';
-
-export default function Hero() {
+const Hero = () => {
     return (
-        <div className="relative w-screen h-screen overflow-hidden">
+        <div className="w-screen h-2/3 text-white">
             <motion.div
-                className="w-[200vw] absolute h-full bg-black"
+                className="w-[200vw] absolute h-2/3 bg-black"
                 initial={{
                     borderRadius: '100%',
-                    translateY: '150vh',
+                    translateY: '-150vh',
                     translateX: '-50vw',
                 }}
                 animate={{
-                    borderRadius: 0,
+                    borderRadius: '20%',
                     translateY: 0,
                 }}
                 transition={{ duration: 1 }}
@@ -20,7 +19,7 @@ export default function Hero() {
             </motion.div>
 
             <div
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                className="flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             >
                 <AnimatedText
                     text="Helloz"
@@ -31,12 +30,14 @@ export default function Hero() {
                 />
                 <AnimatedText 
                     text="I'm Jonathan Matta"
-                    delay={1.5}
-                    x={-15}
-                    y={15}
+                    delay={.8}
+                    x={0}
+                    y={-5}
                 />
             </div>
         </div>
     );
 }
+
+export default Hero;
 

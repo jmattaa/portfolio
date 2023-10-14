@@ -1,10 +1,12 @@
 import './App.css';
+import AboutMe from './components/About';
 import Hero from './components/Hero';
 
 function App() {
     return (
-        <div>
+        <div className="w-screen h-screen">
             <Hero />
+            <AboutMe />
         </div>
     );
 }
