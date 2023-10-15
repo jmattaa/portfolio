@@ -33,11 +33,10 @@ const AnimatedText = ({ text, delay, className, x, y }) => {
     };
 
     return (
-        <motion.div initial="hidden" animate={controls}>
+        <motion.div className={className} initial="hidden" animate={controls}>
             {text.split("").map((char, index) => (
                 char !== " " ? (
                     <motion.span
-                        className={className}
                         key={index}
                         style={{ display: 'inline-block' }}
                         custom={index} // Pass index as a custom prop

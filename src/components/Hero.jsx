@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import AnimatedText from './AnimatedText';
+
 const Hero = () => {
     return (
-        <div className="w-screen h-2/3 text-white">
+        <div className="w-screen h-1/2 text-white">
             <motion.div
-                className="w-[200vw] absolute h-2/3 bg-black"
+                className="w-[200vw] absolute h-2/3 bg-black -z-10"
                 initial={{
                     borderRadius: '100%',
                     translateY: '-150vh',
@@ -19,7 +20,7 @@ const Hero = () => {
             </motion.div>
 
             <div
-                className="flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                className="flex flex-col h-full justify-center items-center"
             >
                 <AnimatedText
                     text="Helloz"
@@ -28,7 +29,7 @@ const Hero = () => {
                     x={15}
                     y={15}
                 />
-                <AnimatedText 
+                <AnimatedText
                     text="I'm Jonathan Matta"
                     delay={.8}
                     x={0}
