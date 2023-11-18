@@ -2,15 +2,17 @@
 export default {
     content: [
         "*.html",
-        "**.html"
+        "**.html",
+        "src/**"
     ],
     theme: {
         colors: {
-            "palette-1": "#40bbc2",
-            "palette-2": "#33969c",
-            "palette-3": "#277075",
-            "palette-4": "#1b4b4e",
-            "palette-5": "#0e2728",
+            "palette-1": "#d8f3dd",
+            "palette-2": "#b2e6ba",
+            "palette-3": "#8dd899",
+            "palette-4": "#68ca77",
+            "palette-5": "#43bc56"
+,
         },
         extend: {},
     },
