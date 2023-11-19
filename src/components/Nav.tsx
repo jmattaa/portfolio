@@ -2,17 +2,17 @@ import conf from '../tailwind-config';
 
 function Nav() {
     return (
-        <header className='fixed py-6 w-full'>
+        <header className='flex items-center justify-center fixed py-6 w-full'>
             <div
-                className='mx-auto flex items-center justify-between w-full
-                            px-8 md:px-14'
+                className='flex items-center justify-between w-1/3 p-3 
+                            lg:border lg:rounded-3xl lg:w-2/3'
             >
-                <div className='text-lg text-palette-5'>
+                <div className='text-lg font-bold text-palette-5'>
                     jmataa
                 </div>
 
                 <div
-                    className='hidden space-x-12 items-center md:flex'
+                    className='hidden space-x-12 items-center lg:flex'
                 >
                     <a href='#'>Home</a>
                     <a href='#'>About me</a>
@@ -27,7 +27,7 @@ function Nav() {
                     </a>
                 </div>
 
-                <div className='md:hidden'>
+                <div className='lg:hidden'>
                     <svg width='32px' height='32px' viewBox='0 0 24 24'
                         fill='none' xmlns='http://www.w3.org/2000/svg'>
                         <path d='M5 8H13.75M5 12H19M10.25 16L19 16'
