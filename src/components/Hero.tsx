@@ -25,8 +25,7 @@ function Hero() {
                 <button
                     className='bg-transparent text-palette-5 font-semibold py-2 
                                 px-4 border rounded transition-all 
-                                hover:bg-palette-3 hover:border-palette-5/0'
-                >
+                                hover:bg-palette-3 hover:border-palette-5/0'>
                     Contact me
                 </button>
             </div>
