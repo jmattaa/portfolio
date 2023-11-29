@@ -17,7 +17,8 @@ function Nav() {
     const navContent = (
         <>
             {navLinks.map(([title, url], i) => (
-                <a href={url} key={i} className='relative after:content-[""] 
+                <a href={url} key={i} className='relative text-palette-5
+                                                  after:content-[""] 
                                                   after:flex after:absolute
                                                   after:bottom-0 after:left-0 
                                                   after:w-full after:h-[.1em] 
@@ -33,7 +34,7 @@ function Nav() {
             <a href='#' className='link'>
                 <button
                     className='px-6 py-2 border rounded text-palette-1 
-                                bg-palette-3 border-palette-3'>
+                                bg-palette-4 border-palette-4'>
                     Contact me
                 </button>
             </a>
