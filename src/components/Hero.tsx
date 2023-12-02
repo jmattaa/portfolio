@@ -24,8 +24,9 @@ function Hero() {
             <div className='flex justify-center items-center'>
                 <button
                     className='bg-transparent text-palette-5 font-semibold py-2 
-                                px-4 border rounded transition-all 
-                                hover:bg-palette-3 hover:border-palette-5/0'>
+                                px-4 border rounded transition-all duration-300
+                                hover:bg-palette-3 hover:border-palette-5/0
+                                hover:text-palette-1'>
                     Contact me
                 </button>
             </div>

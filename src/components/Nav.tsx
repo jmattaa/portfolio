@@ -42,7 +42,8 @@ function Nav() {
     );
 
     return (
-        <header className='flex items-center justify-center fixed py-6 w-full'>
+        <header className='flex items-center justify-center fixed py-6 
+                            w-full bg-palette-1 shadow-md lg:shadow-none'>
             <div
                 className='flex items-center justify-between w-1/3 p-3 
                             lg:border lg:rounded-3xl lg:w-2/3'>
