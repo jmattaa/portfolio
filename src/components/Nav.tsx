@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import conf from '../tailwind-config';
 
@@ -17,39 +18,68 @@ function Nav() {
     const navContent = (
         <>
             {navLinks.map(([title, url], i) => (
-                <a href={url} key={i} className='relative text-palette-5
-                                                  after:content-[""] 
-                                                  after:flex after:absolute
-                                                  after:bottom-0 after:left-0 
-                                                  after:w-full after:h-[.1em] 
-                                                  after:bg-palette-5 after:opacity-0 
-                                                  after:scale-x-0 after:origin-left
-                                                  after:transition-[opacity,transform]
-                                                  after:duration-300 
-                                                  hover:after:opacity-100
-                                                  hover:after:scale-x-[1]'>
+                <motion.a
+                    href={url}
+                    key={i}
+                    className='relative text-palette-5
+                                after:content-[""] 
+                                after:flex after:absolute
+                                after:bottom-0 after:left-0 
+                                after:w-full after:h-[.1em] 
+                                after:bg-palette-5 after:opacity-0 
+                                after:scale-x-0 after:origin-left
+                                after:transition-[opacity,transform]
+                                after:duration-300 
+                                hover:after:opacity-100
+                                hover:after:scale-x-[1]'
+                    initial={{ translateY: '5vh', opacity: 0 }}
+                    animate={{ translateY: 0, opacity: 1 }}
+                    transition={{ delay: (i + 1) * .15 }}
+                >
                     {title}
-                </a>
+                </motion.a>
             ))}
-            <a href='#' className='link'>
-                <button
+            <motion.a
+                href='#'
+                className='link'
+            >
+                <motion.button
                     className='px-6 py-2 border rounded text-palette-1 
-                                bg-palette-4 border-palette-4'>
+                                bg-palette-4 border-palette-4'
+                    initial={{ translateY: '5vh', opacity: 0 }}
+                    animate={{ translateY: 0, opacity: 1 }}
+                    transition={{ delay: (navLinks.length + .6) * .15 }}
+                >
                     Contact me
-                </button>
-            </a>
+                </motion.button>
+            </motion.a>
         </>
     );
 
     return (
-        <header className='flex items-center justify-center fixed py-6 
-                            w-full bg-palette-1 shadow-md lg:shadow-none'>
+        <motion.nav
+            className='flex items-center justify-center fixed py-6 
+                            w-full bg-palette-1 shadow-md lg:shadow-none'
+            initial={{ translateY: '-50vh', opacity: 0 }}
+            animate={{ translateY: 0, opacity: 1 }}
+            transition={{
+                duration: .255,
+                type: "spring",
+                stiffness: 250,
+                damping: 20,
+            }}
+        >
             <div
                 className='flex items-center justify-between w-1/3 p-3 
                             lg:border lg:rounded-3xl lg:w-2/3'>
-                <div className='text-lg font-bold text-palette-5'>
+                <motion.div
+                    className='text-lg font-bold text-palette-5'
+                    initial={{ translateY: '-5vh', opacity: 0 }}
+                    animate={{ translateY: 0, opacity: 1 }}
+                    transition={{ delay: .244 }}
+                >
                     <a href='/'>jmataa</a>
-                </div>
+                </motion.div>
 
                 <div
                     className='hidden space-x-12 items-center lg:flex'>
@@ -62,7 +92,6 @@ function Nav() {
                         <path d='M5 8H13.75M5 12H19M10.25 16L19 16'
                             stroke={conf.theme.colors['palette-5']}
                             strokeLinecap='round'
-                            strokeLinejoin='round'
                         />
                     </svg>
 
@@ -82,7 +111,7 @@ function Nav() {
                     </div>
                 </div>
             </div>
-        </header>
+        </motion.nav>
     )
 }
 

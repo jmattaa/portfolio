@@ -1,8 +1,13 @@
+import { motion } from "framer-motion";
 
 function Hero() {
     return (
-        <div className='container mx-auto flex flex-col 
-                        h-screen justify-center items-center py-12 sm:py-24'>
+        <motion.div
+            className='container mx-auto flex flex-col 
+                        h-screen justify-center items-center py-12 sm:py-24'
+            initial={{ translateY: '10vh', opacity: 0 }}
+            animate={{ translateY: 0, opacity: 1 }}
+        >
             <div className='justify-center items-center flex-col mb-10 w-11/12 
                             md:w-1/2 lg:flex'>
                 <h1 className='text-3xl text-center text-palette-3 
@@ -30,7 +35,7 @@ function Hero() {
                     Contact me
                 </button>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
