@@ -58,7 +58,7 @@ function Nav() {
 
     return (
         <motion.nav
-            className='flex items-center justify-center fixed py-6 
+            className='flex items-center justify-center fixed py-6 z-50
                             w-full bg-palette-1 shadow-md lg:shadow-none'
             initial={{ translateY: '-50vh', opacity: 0 }}
             animate={{ translateY: 0, opacity: 1 }}
