@@ -12,3 +12,9 @@ html {
     box-sizing: border-box;
 }
 
+:target:before {
+    content: "";
+    display: block;
+    height: 200px;
+    margin: -200px 0 0;
+}

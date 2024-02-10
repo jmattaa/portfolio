@@ -1,6 +1,7 @@
 import Nav from './sections/Nav'
 import Hero from './sections/Hero'
 import About from './sections/About'
+import MyWork from './sections/MyWork'
 
 function App() {
     return (
@@ -8,6 +9,7 @@ function App() {
             <Nav />
             <Hero />
             <About />
+            <MyWork />
         </>
     )
 }
