@@ -10,9 +10,8 @@ function Nav() {
     }
 
     const navLinks = [
-        ['Home', '#'],
-        ['About me', '#'],
-        ['My work', '#'],
+        ['About me', '#about-section'],
+        ['My work', '#projects-section'],
     ];
 
     const navContent = (
@@ -59,7 +58,8 @@ function Nav() {
     return (
         <motion.nav
             className='flex items-center justify-center fixed py-6 z-50
-                            w-full bg-palette-1 shadow-md lg:shadow-none'
+                            w-full shadow-md backdrop-blur-md bg-palette-1/10 
+                            lg:shadow-none'
             initial={{ translateY: '-50vh', opacity: 0 }}
             animate={{ translateY: 0, opacity: 1 }}
             transition={{

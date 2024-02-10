@@ -1,6 +1,6 @@
-import Nav from './components/Nav'
-import Hero from './components/Hero'
-import About from './components/About'
+import Nav from './sections/Nav'
+import Hero from './sections/Hero'
+import About from './sections/About'
 
 function App() {
     return (

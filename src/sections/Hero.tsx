@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 function Hero() {
     return (
-        <motion.div
+        <motion.section
             className='container mx-auto flex flex-col 
                         h-screen justify-center items-center py-12 sm:py-24'
             initial={{ translateY: '10vh', opacity: 0 }}
@@ -35,7 +35,7 @@ function Hero() {
                     Contact me
                 </button>
             </div>
-        </motion.div>
+        </motion.section>
     )
 }
 
