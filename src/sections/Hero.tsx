@@ -20,10 +20,9 @@ function Hero() {
                     className='mt-5 sm:mt-10 lg:w-10/12 text-palette-3 
                                 text-center text-lg'
                 >
-                    A student who ... hihi dunno what else I do.
                     Gym is great! And
                     (neo)<span className='text-palette-5 font-bold'>vim</span>{' '}
-                    to! And more gym is also good!!!
+                    too! And more gym is also good!!!
                 </p>
             </div>
             <div className='flex justify-center items-center'>
