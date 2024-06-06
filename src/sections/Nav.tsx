@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import conf from '../tailwind-config';
 
-function Nav() {
+const Nav = () => {
     const [menuState, setMenuState] = useState(false);
 
     const toggleBurger = () => {
@@ -58,8 +58,8 @@ function Nav() {
     return (
         <motion.nav
             className='flex items-center justify-center fixed py-6 z-50
-                            w-full shadow-md backdrop-blur-md bg-palette-1/10 
-                            lg:shadow-none'
+                            w-full shadow-md bg-palette-1/10 backdrop-blur-sm
+                            lg:shadow-none lg:backdrop-filter-none'
             initial={{ translateY: '-50vh', opacity: 0 }}
             animate={{ translateY: 0, opacity: 1 }}
             transition={{
@@ -71,7 +71,8 @@ function Nav() {
         >
             <div
                 className='flex items-center justify-between w-1/3 p-3 
-                            lg:border lg:rounded-3xl lg:w-2/3'>
+                            lg:border lg:rounded-3xl lg:w-2/3 
+                            lg:backdrop-blur-sm'>
                 <motion.div
                     className='text-lg font-bold text-palette-5'
                     initial={{ translateY: '-5vh', opacity: 0 }}
@@ -113,6 +114,6 @@ function Nav() {
             </div>
         </motion.nav>
     )
-}
+};
 
 export default Nav;

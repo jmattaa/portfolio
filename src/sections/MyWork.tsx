@@ -1,6 +1,6 @@
 import aboutMeData from "../assets/data/aboutMe.json";
 
-function MyWork() {
+const MyWork = () => {
     return (
         <section id="projects-section">
             <div className='container mx-auto flex flex-col h-screen md:w-2/3'>
@@ -15,7 +15,7 @@ function MyWork() {
             </div>
         </section>
     )
-}
+};
 
 export default MyWork; 
 

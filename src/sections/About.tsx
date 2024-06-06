@@ -1,6 +1,6 @@
 import aboutMeData from "../assets/data/aboutMe.json";
 
-function About() {
+const About = () => {
     return (
         <section id="about-section">
             <div className='container mx-auto flex flex-col md:w-2/3'>
@@ -15,6 +15,6 @@ function About() {
             </div>
         </section>
     )
-}
+};
 
 export default About; 

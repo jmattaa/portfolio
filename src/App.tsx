@@ -1,9 +1,9 @@
-import Nav from './sections/Nav'
-import Hero from './sections/Hero'
-import About from './sections/About'
-import MyWork from './sections/MyWork'
+import Nav from './sections/Nav';
+import Hero from './sections/Hero';
+import About from './sections/About';
+import MyWork from './sections/MyWork';
 
-function App() {
+const App = () => {
     return (
         <>
             <Nav />
@@ -12,6 +12,6 @@ function App() {
             <MyWork />
         </>
     )
-}
+};
 
-export default App
+export default App;

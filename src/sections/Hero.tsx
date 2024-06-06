@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import AnimatedText from "../components/AnimatedText";
 
-function Hero() {
+const Hero = () => {
     return (
         <motion.section
             className='container mx-auto flex flex-col 
@@ -10,18 +11,35 @@ function Hero() {
         >
             <div className='justify-center items-center flex-col mb-10 w-11/12 
                             md:w-1/2 lg:flex'>
-                <h1 className='text-3xl text-center text-palette-3 
-                                lg:text-5xl xl:text-6xl'>
-                    Helloz I am{' '}
-                    <span className='text-palette-5'>Jonathan{' '}</span>
-                    Matta
+                <h1 className='text-2xl text-center text-palette-3 
+                                lg:text-4xl xl:text-5xl'>
+                    <AnimatedText
+                        text="Helloz I am"
+                        x={15}
+                        y={15}
+                    />
+                    <div>
+                        <AnimatedText
+                            text="Jmattaa"
+                            expandedText="Jonathan Matta"
+                            x={0}
+                            y={5}
+                        />
+                    </div>
                 </h1>
                 <p
                     className='mt-5 sm:mt-10 lg:w-10/12 text-palette-3 
                                 text-center text-lg'
                 >
-                    Gym is great! And
-                    (neo)<span className='text-palette-5 font-bold'>vim</span>{' '}
+                    Gym is great! And{" "}
+                    <AnimatedText
+                        text="vim"
+                        expandedText="neovim"
+                        x={0}
+                        y={-5}
+                        speed={.2}
+                    />
+                    {" "}
                     too! And more gym is also good!!!
                 </p>
             </div>
@@ -34,8 +52,19 @@ function Hero() {
                     Contact me
                 </button>
             </div>
+
+
+            <div className="text-xs absolute top-1/4 left-0">
+                (Hover the{" "}
+                <AnimatedText
+                    text="bold text"
+                    expandedText="to see something cool"
+                    x={-5}
+                    y={15}
+                />)
+            </div>
         </motion.section>
     )
-}
+};
 
 export default Hero; 
