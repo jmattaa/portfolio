@@ -1,7 +1,7 @@
-import Nav from './sections/Nav';
-import Hero from './sections/Hero';
-import About from './sections/About';
-import MyWork from './sections/MyWork';
+import Nav from "./sections/Nav";
+import Hero from "./sections/Hero";
+import About from "./sections/About";
+import MyWork from "./sections/MyWork";
 
 const App = () => {
     return (
@@ -9,6 +9,7 @@ const App = () => {
             <Nav />
             <Hero />
             <About />
+            {/* add a separator here! */}
             <MyWork />
         </>
     )

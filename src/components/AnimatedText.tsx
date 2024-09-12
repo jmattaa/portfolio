@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 type AnimatedTextProps = {
     text: string,
@@ -26,9 +26,9 @@ const AnimatedText = ({
         (className || "") + " font-bold text-palette-5" : className;
 
     const animateText = async (newText: string) => {
-        await controls.start('hidden');
+        await controls.start("hidden");
         setCurrentText(newText);
-        await controls.start('visible');
+        await controls.start("visible");
     };
 
     useEffect(() => {
@@ -58,6 +58,7 @@ const AnimatedText = ({
 
     return (
         <motion.span
+            className="p-3"
             initial="hidden"
             animate={controls}
             onHoverStart={() => expandOnHover && animateText(expandedText)}
@@ -68,7 +69,7 @@ const AnimatedText = ({
                     <motion.span
                         className={className}
                         key={index}
-                        style={{ display: 'inline-block' }}
+                        style={{ display: "inline-block" }}
                         custom={index}
                         variants={variants}
                     >

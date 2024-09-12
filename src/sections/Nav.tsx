@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import conf from '../tailwind-config';
+import { motion } from "framer-motion";
+import { useState } from "react";
+import conf from "../tailwind-config";
 
 const Nav = () => {
     const [menuState, setMenuState] = useState(false);
@@ -10,8 +10,8 @@ const Nav = () => {
     }
 
     const navLinks = [
-        ['About me', '#about-section'],
-        ['My work', '#projects-section'],
+        ["About me", "#about-section"],
+        ["My work", "#projects-section"],
     ];
 
     const navContent = (
@@ -31,7 +31,7 @@ const Nav = () => {
                                 after:duration-300 
                                 hover:after:opacity-100
                                 hover:after:scale-x-[1]'
-                    initial={{ translateY: '5vh', opacity: 0 }}
+                    initial={{ translateY: "5vh", opacity: 0 }}
                     animate={{ translateY: 0, opacity: 1 }}
                     transition={{ delay: (i + 1) * .15 }}
                 >
@@ -39,13 +39,13 @@ const Nav = () => {
                 </motion.a>
             ))}
             <motion.a
-                href='#'
-                className='link'
+                href="#"
+                className="link"
             >
                 <motion.button
-                    className='px-6 py-2 border rounded text-palette-1 
-                                bg-palette-4 border-palette-4'
-                    initial={{ translateY: '5vh', opacity: 0 }}
+                    className="px-6 py-2 border rounded text-palette-1 
+                                bg-palette-4 border-palette-4"
+                    initial={{ translateY: "5vh", opacity: 0 }}
                     animate={{ translateY: 0, opacity: 1 }}
                     transition={{ delay: (navLinks.length + .6) * .15 }}
                 >
@@ -57,10 +57,10 @@ const Nav = () => {
 
     return (
         <motion.nav
-            className='flex items-center justify-center fixed py-6 z-50
+            className="flex items-center justify-center fixed py-6 z-50
                             w-full shadow-md bg-palette-1/10 backdrop-blur-sm
-                            lg:shadow-none lg:backdrop-filter-none'
-            initial={{ translateY: '-50vh', opacity: 0 }}
+                            lg:shadow-none lg:backdrop-filter-none"
+            initial={{ translateY: "-50vh", opacity: 0 }}
             animate={{ translateY: 0, opacity: 1 }}
             transition={{
                 duration: .255,
@@ -70,29 +70,29 @@ const Nav = () => {
             }}
         >
             <div
-                className='flex items-center justify-between w-1/3 p-3 
+                className="flex items-center justify-between w-1/3 p-3 
                             lg:border lg:rounded-3xl lg:w-2/3 
-                            lg:backdrop-blur-sm'>
+                            lg:backdrop-blur-sm">
                 <motion.div
-                    className='text-lg font-bold text-palette-5'
-                    initial={{ translateY: '-5vh', opacity: 0 }}
+                    className="text-lg font-bold text-palette-5"
+                    initial={{ translateY: "-5vh", opacity: 0 }}
                     animate={{ translateY: 0, opacity: 1 }}
                     transition={{ delay: .244 }}
                 >
-                    <a href='/'>jmataa</a>
+                    <a href="/">jmattaa</a>
                 </motion.div>
 
                 <div
-                    className='hidden space-x-12 items-center lg:flex'>
+                    className="hidden space-x-12 items-center lg:flex">
                     {navContent}
                 </div>
-                <div className='lg:hidden' onClick={
+                <div className="lg:hidden" onClick={
                     () => toggleBurger()}>
-                    <svg width='32px' height='32px' viewBox='0 0 24 24'
-                        fill='none' xmlns='http://www.w3.org/2000/svg'>
-                        <path d='M5 8H13.75M5 12H19M10.25 16L19 16'
-                            stroke={conf.theme.colors['palette-5']}
-                            strokeLinecap='round'
+                    <svg width="32px" height="32px" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 8H13.75M5 12H19M10.25 16L19 16"
+                            stroke={conf.theme.colors["palette-5"]}
+                            strokeLinecap="round"
                         />
                     </svg>
 
@@ -101,12 +101,12 @@ const Nav = () => {
                         fixed top-0 left-0 w-full h-0 bg-palette-2
                         transition-[height,opacity] duration-200
                         ${menuState ?
-                            'flex !h-screen opacity-90' :
-                            'opacity-0 h-0 pointer-events-none'
+                            "flex !h-screen opacity-90" :
+                            "opacity-0 h-0 pointer-events-none"
                         }
                     `}>
-                        <div className='w-full h-full flex flex-col items-center 
-                                        justify-center [&>*]:my-6'>
+                        <div className="w-full h-full flex flex-col items-center 
+                                        justify-center [&>*]:my-6">
                             {navContent}
                         </div>
                     </div>
