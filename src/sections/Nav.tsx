@@ -20,7 +20,10 @@ const Nav = () => {
                 <motion.a
                     href={url}
                     key={i}
-                    className='relative text-palette-5
+                    className='relative text-palette-3
+                                hover:text-palette-5       
+                                duration-500
+                                transition-[font]
                                 after:content-[""] 
                                 after:flex after:absolute
                                 after:bottom-0 after:left-0 
@@ -31,6 +34,16 @@ const Nav = () => {
                                 after:duration-300 
                                 hover:after:opacity-100
                                 hover:after:scale-x-[1]'
+                    onMouseEnter={(e) => {
+                        e.target.style.
+                            fontVariationSettings =
+                            '"MONO" 0, "CASL" 1, "wght" 900, "slnt" 1, "CRSV" 1';
+                    }}
+                    onMouseLeave={(e) => {
+                        e.target.style.
+                            fontVariationSettings =
+                            '"MONO" var(--mono), "CASL" var(--casl), "wght" var(--wght), "slnt" var(--slnt), "CRSV" var(--CRSV)';
+                    }}
                     initial={{ translateY: "5vh", opacity: 0 }}
                     animate={{ translateY: 0, opacity: 1 }}
                     transition={{ delay: (i + 1) * .15 }}

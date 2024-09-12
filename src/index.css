@@ -2,11 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    scroll-behavior: smooth;
+:root {
+    --mono: 0.53;
+    --casl: .7;
+    --wght: 690;
+    --slnt: 0;
+    --CRSV: 1;
 }
 
-*, *::before, *::after {
+@font-face {
+    font-family: "Recursive";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: optional;
+    src: url(/Recursive_VF_1.085.woff2) format("woff2");
+}
+
+
+html {
+    scroll-behavior: smooth;
+
+    font-family: "Recursive";
+    font-variation-settings:
+        "MONO" var(--mono),
+        "CASL" var(--casl),
+        "wght" var(--wght),
+        "slnt" var(--slnt),
+        "CRSV" var(--CRSV);
+}
+
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;

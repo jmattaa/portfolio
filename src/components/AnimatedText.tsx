@@ -58,7 +58,7 @@ const AnimatedText = ({
 
     return (
         <motion.span
-            className="p-3"
+            className="p-8"
             initial="hidden"
             animate={controls}
             onHoverStart={() => expandOnHover && animateText(expandedText)}
