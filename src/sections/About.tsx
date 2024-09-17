@@ -1,4 +1,4 @@
-import aboutMeData from "../../public/data/aboutMe.json";
+import aboutMeData from "../data/aboutMe.json";
 
 const About = () => {
     return (
