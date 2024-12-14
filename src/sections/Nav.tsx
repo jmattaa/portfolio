@@ -34,12 +34,14 @@ const Nav = () => {
                                 hover:after:opacity-100
                                 hover:after:scale-x-[1]'
                     onMouseEnter={(e) => {
-                        e.target.style.
+                        const target = e.target as HTMLElement;
+                        target.style.
                             fontVariationSettings =
                             '"MONO" 0, "CASL" 1, "wght" 900, "slnt" 1, "CRSV" 1';
                     }}
                     onMouseLeave={(e) => {
-                        e.target.style.
+                        const target = e.target as HTMLElement;
+                        target.style.
                             fontVariationSettings =
                             '"MONO" var(--mono), "CASL" var(--casl), "wght" var(--wght), "slnt" var(--slnt), "CRSV" var(--CRSV)';
                     }}>

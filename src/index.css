@@ -12,10 +12,11 @@
 
 @font-face {
     font-family: "Recursive";
+    src:
+        local("Recursive"),
+        url("/fonts/Recursive_VF_1.085.woff2") format("woff2");
     font-style: normal;
     font-weight: 100 900;
-    font-display: optional;
-    src: url(/fonts/Recursive_VF_1.085.woff2) format("woff2");
 }
 
 
