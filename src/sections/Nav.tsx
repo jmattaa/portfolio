@@ -53,7 +53,7 @@ const Nav = () => {
                 <button
                     className="px-6 py-2 border rounded text-palette-1 
                                 bg-palette-4 border-palette-4 
-                                active:bg-palette-5">
+                                hover:bg-palette-5 active:bg-palette-3">
                     Contact me
                 </button>
             </a>
@@ -61,17 +61,21 @@ const Nav = () => {
     );
 
     return (
-        <nav className="sticky top-0 left-8 z-50 w-full shadow-md bg-palette-1/10 
-                        backdrop-blur-sm p-8 lg:w-1/3">
+        <nav className="sticky lg:fixed top-0 z-50 w-full 
+                        shadow-md bg-palette-1/10 backdrop-blur-sm p-8 lg:w-1/3
+                        lg:shadow-none lg:top-8 lg:backdrop-blur-none">
             <div
-                className="flex justify-around items-center p-3 lg:flex-col">
+                className="flex justify-around items-center p-3 lg:flex-col 
+                            lg:space-y-4">
                 <div className="text-lg font-bold text-palette-5">
                     <a href="/">jmattaa</a>
                 </div>
 
-                <div className="hidden space-x-12 items-center lg:flex">
+                <div className="hidden space-y-8 items-center justify-center 
+                                flex-col lg:flex">
                     {navContent}
                 </div>
+
                 <div className="lg:hidden" onClick={
                     () => toggleBurger()}>
                     <svg width="32px" height="32px" viewBox="0 0 24 24"
@@ -84,7 +88,7 @@ const Nav = () => {
 
                     <div className={`
                         flex flex-col items-center justify-center z-50
-                        fixed top-0 left-0 w-full h-0 bg-palette-2
+                        fixed top-0 left-0 w-full h-0 bg-palette-1
                         transition-[height,opacity] duration-200
                         ${menuState ?
                             "flex !h-screen opacity-90" :
