@@ -1,0 +1,32 @@
+{
+  "projects": [
+    {
+      "name": "this website",
+      "url": "#",
+      "description": "yeh, it's just this website but it's a project",
+      "tech": [
+        "react",
+        "tailwindcss",
+        "vite",
+        "(my hacky cms that is basically a bunch of json files)"
+      ]
+    },
+    {
+      "name": "laser",
+      "url": "https://github.com/jmattaa/laser",
+      "description": "basically ls but configurable with lua!!! (and it integrates with git 🔥)",
+      "tech": [
+        "c",
+        "lua"
+      ]
+    },
+    {
+      "name": "quickmark.nvim",
+      "url": "https://github.com/jmattaa/quickmark.nvim",
+      "description": "a neovim plugin for marking files and then jumping to them quickly",
+      "tech": [
+        "lua"
+      ]
+    }
+  ]
+}
