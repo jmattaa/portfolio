@@ -4,8 +4,8 @@
 
 :root {
     --mono: 0.53;
-    --casl: .7;
-    --wght: 690;
+    --casl: 1;
+    --wght: 490;
     --slnt: 0;
     --CRSV: 1;
 }
@@ -45,4 +45,9 @@ html {
     display: block;
     height: 200px;
     margin: -200px 0 0;
+}
+
+mark {
+    background-color: theme("colors.palette-5");
+    color: theme("colors.palette-1");
 }

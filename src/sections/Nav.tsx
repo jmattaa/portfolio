@@ -9,8 +9,8 @@ const Nav = () => {
     }
 
     const navLinks = [
-        ["whoami?", "#about-section"],
-        ["My work", "#projects-section"],
+        ["projects", "#projects-section"],
+        ["some writing", "/blog"],
     ];
 
     const navContent = (
@@ -48,15 +48,12 @@ const Nav = () => {
                     {title}
                 </a>
             ))}
-            <a
-                href="#"
-                className="link"
-            >
+            <a href="#">
                 <button
                     className="px-6 py-2 border rounded text-palette-1 
                                 bg-palette-4 border-palette-4 
                                 hover:bg-palette-5 active:bg-palette-3">
-                    Contact me
+                    contact me
                 </button>
             </a>
         </>

@@ -1,4 +1,4 @@
-import aboutMeData from "../data/aboutMe.json";
+import AboutMeText from "../data/aboutMe";
 
 const About = () => {
     return (
@@ -9,9 +9,7 @@ const About = () => {
                     Who am I?
                 </h1>
 
-                <p className="leading-loose">
-                    {aboutMeData.text}
-                </p>
+                <AboutMeText />
             </div>
         </section>
     )
