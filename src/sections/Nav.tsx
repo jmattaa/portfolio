@@ -9,8 +9,8 @@ const Nav = () => {
     }
 
     const navLinks = [
-        ["projects", "#projects-section"],
-        ["some writing", "/blog"],
+        ["projects", "/projects"],
+        ["some writing", "/writing"],
     ];
 
     const navContent = (
