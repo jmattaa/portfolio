@@ -1,21 +1,33 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Nav from "./sections/Nav";
-import Projects from "./pages/Projects";
-import Home from "./pages/Home";
-import Writing from "./pages/Writing";
+import { useLocation, useOutlet } from "react-router-dom";
+import Nav from "./components/Nav";
+import { AnimatePresence } from "framer-motion";
+import React from "react";
+import AnimatedLayout from "./components/AnimatedLayout";
+
+function AnimatedOutlet() {
+    const location = useLocation();
+    const element = useOutlet();
+
+    return (
+        <AnimatePresence mode="wait" initial={true}>
+            {element && React.cloneElement(element, { key: location.pathname })}
+        </AnimatePresence>
+    );
+}
+
 
 const App = () => {
     return (
-        <Router>
+        <>
             <Nav />
-            <div className="lg:w-3/4 lg:absolute right-0 top-8">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/projects" element={<Projects />} />
-                    <Route path="/writing" element={<Writing />} />
-                </Routes>
-            </div>
-        </Router>
+            <AnimatePresence mode="wait" initial={true}>
+                <AnimatedLayout>
+                    <div className="lg:w-3/4 lg:absolute right-0 top-8">
+                        <AnimatedOutlet />
+                    </div>
+                </AnimatedLayout>
+            </AnimatePresence>
+        </>
     );
 };
 

@@ -1,7 +1,11 @@
 import { useState } from "react";
 import conf from "../tailwind-config";
+import { useLocation } from "react-router-dom";
 
 const Nav = () => {
+    const pathname = useLocation().pathname;
+    const isActive = (path: string) => pathname === path;
+
     const [menuState, setMenuState] = useState(false);
 
     const toggleBurger = () => {
@@ -9,6 +13,7 @@ const Nav = () => {
     }
 
     const navLinks = [
+        ["home", "/"],
         ["projects", "/projects"],
         ["some writing", "/writing"],
     ];
@@ -19,8 +24,9 @@ const Nav = () => {
                 <a
                     href={url}
                     key={i}
-                    className='relative text-palette-3
-                                hover:text-palette-5       
+                    className={`relative text-palette-3
+                                rounded
+                                p-1 hover:text-palette-5       
                                 duration-500
                                 transition-[font]
                                 after:content-[""] 
@@ -32,7 +38,8 @@ const Nav = () => {
                                 after:transition-[opacity,transform]
                                 after:duration-300 
                                 hover:after:opacity-100
-                                hover:after:scale-x-[1]'
+                                hover:after:scale-x-[1]
+                                ${isActive(url) ? "bg-palette-5 !text-palette-1" : ""}`}
                     onMouseEnter={(e) => {
                         const target = e.target as HTMLElement;
                         target.style.
