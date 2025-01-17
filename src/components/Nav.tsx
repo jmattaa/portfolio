@@ -1,6 +1,6 @@
 import { useState } from "react";
 import conf from "../tailwind-config";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Nav = () => {
     const pathname = useLocation().pathname;
@@ -21,8 +21,8 @@ const Nav = () => {
     const navContent = (
         <>
             {navLinks.map(([title, url], i) => (
-                <a
-                    href={url}
+                <Link
+                    to={url}
                     key={i}
                     className={`relative text-palette-3
                                 rounded
@@ -53,16 +53,14 @@ const Nav = () => {
                             '"MONO" var(--mono), "CASL" var(--casl), "wght" var(--wght), "slnt" var(--slnt), "CRSV" var(--CRSV)';
                     }}>
                     {title}
-                </a>
+                </Link>
             ))}
-            <a href="#">
-                <button
-                    className="px-6 py-2 border rounded text-palette-1 
+            <button
+                className="px-6 py-2 border rounded text-palette-1 
                                 bg-palette-4 border-palette-4 
                                 hover:bg-palette-5 active:bg-palette-3">
-                    contact me
-                </button>
-            </a>
+                contact me
+            </button>
         </>
     );
 
@@ -74,7 +72,7 @@ const Nav = () => {
                 className="flex justify-around items-center p-3 lg:flex-col 
                             lg:space-y-4">
                 <div className="text-lg font-bold text-palette-5">
-                    <a href="/">jmattaa</a>
+                    <Link to="/">jmattaa</Link>
                 </div>
 
                 <div className="hidden space-y-8 items-center justify-center 

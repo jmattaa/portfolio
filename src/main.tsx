@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client"
 import App from "./App.tsx"
 import "./index.css"
 import { routes } from "./routes.tsx";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Link, RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
                     404 not found
                 </div>
                 <div>
-                    <a href="/" className="underline">go home</a>
+                    <Link to="/" className="underline">go home</Link>
                 </div>
             </main>
         ),

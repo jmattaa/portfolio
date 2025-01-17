@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const AboutMeText = () => {
     const date = new Date();
     const myage = (date.getFullYear() - 2007) + " "; // yaaay number + string 😭
@@ -21,10 +23,10 @@ const AboutMeText = () => {
                 I fell further down the rabbit hole... until now that I'm using
                 Arch linux and Vim to write C
                 (check out{" "}
-                <a href="https://github.com/jmattaa/laser"
+                <Link to="https://github.com/jmattaa/laser"
                     className="underline text-palette-5 hover:underline-offset-2">
                     jmattaa/laser
-                </a>).
+                </Link>).
                 The music
                 started also in 2016 (why does everything happen in 2016?)
                 I started learning some

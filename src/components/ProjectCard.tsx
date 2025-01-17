@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import { Project } from "../interfaces";
 
 const ProjectCard = ({ project }: { project: Project }) => {
     return (
-        <a href={project.url}>
+        <Link to={project.url}>
             <div
                 className="p-4 bg-palette-4 rounded border-palette-4 
                             text-palette-1 m-8 transition-all 
@@ -21,7 +22,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                     ))}
                 </div>
             </div>
-        </a>
+        </Link>
     );
 };
 
