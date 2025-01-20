@@ -10,6 +10,7 @@ const conf = {
             "palette-3": "#8dd899",
             "palette-4": "#68ca77",
             "palette-5": "#43bc56",
+            "black": "#000000",
         },
         extend: {},
     },

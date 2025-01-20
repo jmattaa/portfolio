@@ -20,7 +20,7 @@ const App = () => {
         <>
             <Nav />
             <AnimatePresence mode="wait" initial={true}>
-                <div className="lg:w-3/4 lg:absolute right-0 top-8">
+                <div className="lg:w-3/4 lg:absolute right-0">
                     <AnimatedOutlet />
                 </div>
             </AnimatePresence>

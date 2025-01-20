@@ -1,8 +1,33 @@
 import { Link } from "react-router-dom";
 
 const AboutMeText = () => {
-    const date = new Date();
-    const myage = (date.getFullYear() - 2007) + " "; // yaaay number + string 😭
+    const whatzMyFullAge = () => {
+        const today = new Date();
+
+        // Month is zero-indexed (7 = Agust) 😭
+        const birthDate = new Date(2007, 7, 18);
+
+        let years = today.getFullYear() - birthDate.getFullYear();
+        let months = today.getMonth() - birthDate.getMonth();
+        let days = today.getDate() - birthDate.getDate();
+
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        if (days < 0) {
+            months--;
+            const previousMonth = new Date(today.getFullYear(), today.getMonth(),
+                0);
+            days += previousMonth.getDate();
+        }
+
+        return { years, months, days };
+    };
+
+    const age = whatzMyFullAge();
+    const ageString = `${age.years} years, ${age.months} months, and ${age.days} days`;
 
     return (
         <p className="leading-loose">
@@ -38,8 +63,7 @@ const AboutMeText = () => {
                 One thing though, that
                 defines me most is that, I'm a <em>child of God</em>, a follower of{" "}
                 <mark>Jesus Christ</mark>. I'd say that this is what defines me the most, and
-                makes me who I am. Hopefully this was a good summary of my {myage}
-                years.
+                makes me who I am. Hopefully this was a good summary of my {ageString}.
             </p>
         </p>
     )

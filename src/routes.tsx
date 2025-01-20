@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Writing from "./pages/Writing";
 import React from "react";
 import AnimatedLayout from "./components/AnimatedLayout";
+import Contact from "./pages/Contact";
 
 export const routes = {
     Home: {
@@ -19,5 +20,10 @@ export const routes = {
         name: 'writing',
         path: '/writing',
         element: <AnimatedLayout>{React.createElement(Writing)}</AnimatedLayout>,
+    },
+    Contact: {
+        name: 'contact',
+        path: '/contact',
+        element: <AnimatedLayout>{React.createElement(Contact)}</AnimatedLayout>,
     },
 }

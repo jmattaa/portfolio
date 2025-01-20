@@ -55,19 +55,20 @@ const Nav = () => {
                     {title}
                 </Link>
             ))}
-            <button
+            <Link to="/contact"
                 className="px-6 py-2 border rounded text-palette-1 
                                 bg-palette-4 border-palette-4 
                                 hover:bg-palette-5 active:bg-palette-3">
                 contact me
-            </button>
+            </Link>
         </>
     );
 
     return (
-        <nav className="sticky lg:fixed top-0 z-50 w-full 
-                        shadow-md bg-palette-1/10 backdrop-blur-sm p-8 lg:w-1/3
-                        lg:shadow-none lg:top-8 lg:backdrop-blur-none">
+        <nav className="sticky lg:fixed top-0 left-0 z-50 w-full 
+                        shadow-md bg-palette-1/20 backdrop-blur-sm p-8 lg:w-1/3
+                        lg:bg-palette-1/0 lg:shadow-none lg:top-8 
+                        lg:backdrop-blur-none">
             <div
                 className="flex justify-around items-center p-3 lg:flex-col 
                             lg:space-y-4">
