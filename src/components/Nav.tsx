@@ -66,8 +66,8 @@ const Nav = () => {
 
     return (
         <nav className="sticky lg:fixed top-0 left-0 z-50 w-full 
-                        shadow-md bg-palette-1/20 backdrop-blur-sm p-8 lg:w-1/3
-                        lg:bg-palette-1/0 lg:shadow-none lg:top-8 
+                        shadow-md bg-palette-1/20 backdrop-blur-sm p-8 lg:w-1/4
+                        lg:bg-palette-1/0 lg:shadow-none lg:top-8 lg:p-0
                         lg:backdrop-blur-none">
             <div
                 className="flex justify-around items-center p-3 lg:flex-col 

@@ -1,6 +1,6 @@
 export default function Contact() {
     return (
-        <div className="bg-black font-mono p-8 min-h-screen 
+        <div className="bg-black font-mono p-8 h-screen 
                         [&_input]:!text-palette-1
                         [&_textarea]:!text-palette-1">
             <h1 className="xl font-bold mb-6">Contact Me</h1>

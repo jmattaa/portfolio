@@ -18,11 +18,11 @@ function AnimatedOutlet() {
 const App = () => {
     return (
         <>
-            <Nav />
             <AnimatePresence mode="wait" initial={true}>
-                <div className="lg:w-3/4 lg:absolute right-0">
+                <Nav />
+                <main className="lg:w-3/4 lg:absolute right-0">
                     <AnimatedOutlet />
-                </div>
+                </main>
             </AnimatePresence>
         </>
     );
