@@ -37,7 +37,7 @@ export default function Contact() {
                     ></textarea>
                 </div>
                 <div className="mt-6">
-                    <button className="bg-palette-4 text-palette-1 px-4 py-2 
+                    <button className="bg-palette-4 text-black px-4 py-2 
                                     rounded transition hover:bg-palette-5
                                     active:scale-9
                                     active:scale-955">

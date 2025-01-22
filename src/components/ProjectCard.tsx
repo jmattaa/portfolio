@@ -8,7 +8,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 className="p-4 bg-palette-3/20 rounded m-8 text-palette-1 
                             transition-all hover:bg-palette-4/30 
                             hover:translate-x-2 ease-in">
-                <h3 className="text-2xl font-bold mb-3">{project.name}</h3>
+                <h2 className="text-2xl font-bold mb-3">{project.name}</h2>
                 <p className="mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, index) => (

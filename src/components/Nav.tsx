@@ -39,7 +39,7 @@ const Nav = () => {
                                 after:duration-300 
                                 hover:after:opacity-100
                                 hover:after:scale-x-[1]
-                                ${isActive(url) ? "bg-palette-5 !text-palette-1" : ""}`}
+                                ${isActive(url) ? "bg-palette-5 !text-black" : ""}`}
                     onMouseEnter={(e) => {
                         const target = e.target as HTMLElement;
                         target.style.
@@ -56,7 +56,7 @@ const Nav = () => {
                 </Link>
             ))}
             <Link to="/contact"
-                className="px-6 py-2 border rounded text-palette-1
+                className="px-6 py-2 border rounded text-black
                                 bg-palette-5 border-palette-4 
                                 hover:bg-palette-4 active:bg-palette-3">
                 contact me
