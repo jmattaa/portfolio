@@ -28,7 +28,7 @@ const Nav = () => {
                                 rounded
                                 p-1 hover:text-palette-5       
                                 duration-500
-                                transition-[font]
+                                transition-all
                                 after:content-[""] 
                                 after:flex after:absolute
                                 after:bottom-0 after:left-0 
@@ -56,9 +56,9 @@ const Nav = () => {
                 </Link>
             ))}
             <Link to="/contact"
-                className="px-6 py-2 border rounded text-palette-1 
-                                bg-palette-4 border-palette-4 
-                                hover:bg-palette-5 active:bg-palette-3">
+                className="px-6 py-2 border rounded text-palette-1
+                                bg-palette-5 border-palette-4 
+                                hover:bg-palette-4 active:bg-palette-3">
                 contact me
             </Link>
         </>
@@ -66,7 +66,7 @@ const Nav = () => {
 
     return (
         <nav className="sticky lg:fixed top-0 left-0 z-50 w-full 
-                        shadow-md bg-palette-1/20 backdrop-blur-sm p-8 lg:w-1/4
+                        shadow-md bg-palette-2/20 backdrop-blur-sm p-8 lg:w-1/4
                         lg:bg-palette-1/0 lg:shadow-none lg:top-8 lg:p-0
                         lg:backdrop-blur-none">
             <div
@@ -93,7 +93,7 @@ const Nav = () => {
 
                     <div className={`
                         flex flex-col items-center justify-center z-50
-                        fixed top-0 left-0 w-full h-0 bg-palette-1
+                        fixed top-0 left-0 w-full h-0 bg-black
                         transition-[height,opacity] duration-200
                         ${menuState ?
                             "flex !h-screen opacity-90" :

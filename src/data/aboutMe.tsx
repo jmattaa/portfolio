@@ -46,7 +46,7 @@ const AboutMeText = () => {
             <p className="indent-8">
                 I tripped into the coding world in when i was 9 in 2016.
                 I fell further down the rabbit hole... until now that I'm using
-                Arch linux and Vim to write C
+                Arch linux and NeoVim to write C
                 (check out{" "}
                 <Link to="https://github.com/jmattaa/laser"
                     className="underline text-palette-5 hover:underline-offset-2">
@@ -62,8 +62,10 @@ const AboutMeText = () => {
             <p className="indent-8">
                 One thing though, that
                 defines me most is that, I'm a <em>child of God</em>, a follower of{" "}
-                <mark>Jesus Christ</mark>. I'd say that this is what defines me the most, and
-                makes me who I am. Hopefully this was a good summary of my {ageString}.
+                <mark className="p-2 drop-shadow-glow">Jesus Christ</mark>. 
+                I'd say that this is what defines me the most, and makes me who 
+                I am. 
+                Hopefully this was a good summary of my {ageString}.
             </p>
         </p>
     )

@@ -48,6 +48,5 @@ html {
 }
 
 mark {
-    background-color: theme("colors.palette-5");
-    color: theme("colors.palette-1");
+    @apply bg-palette-5 text-black px-1;
 }

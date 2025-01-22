@@ -30,8 +30,7 @@
       "description": "a neovim plugin for marking files and then jumping to them quickly",
       "tech": [
         "lua",
-        "neovim",
-        "vimscript"
+        "neovim"
       ]
     },
     {
@@ -39,7 +38,8 @@
         "url": "https://github.com/jmattaa/scripts",
         "description": "a collection of random shell scripts",
         "tech": [
-            "shell scripting"
+            "shell scripting",
+            "sh"
         ]
     }
   ]
