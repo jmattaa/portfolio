@@ -1,46 +1,46 @@
 {
-  "projects": [
-    {
-      "name": "this website",
-      "url": "#",
-      "description": "yeh, it's just this website but it's a project",
-      "tech": [
-        "react",
-        "framer motion",
-        "tailwindcss",
-        "vite",
-        "typescript",
-        "(my hacky cms that is basically a bunch of json files)"
-      ]
-    },
-    {
-      "name": "laser",
-      "url": "https://github.com/jmattaa/laser",
-      "description": "basically ls but configurable with lua!!! (and it integrates with git 🔥)",
-      "tech": [
-        "c",
-        "lua",
-        "libgit2",
-        "cmake"
-      ]
-    },
-    {
-      "name": "quickmark.nvim",
-      "url": "https://github.com/jmattaa/quickmark.nvim",
-      "description": "a neovim plugin for marking files and then jumping to them quickly",
-      "tech": [
-        "lua",
-        "neovim"
-      ]
-    },
-    {
-        "name": "scripts",
-        "url": "https://github.com/jmattaa/scripts",
-        "description": "a collection of random shell scripts",
-        "tech": [
-            "shell scripting",
-            "sh"
-        ]
-    }
-  ]
+    "projects": [
+        {
+            "name": "this website",
+            "url": "#",
+            "description": "yeh, it's just this website but it's a project",
+            "tech": [
+                "react",
+                "framer motion",
+                "tailwindcss",
+                "vite",
+                "typescript",
+                "(my hacky cms that is basically a bunch of json files)"
+            ]
+        },
+        {
+            "name": "laser",
+            "url": "https://github.com/jmattaa/laser",
+            "description": "basically ls but configurable with lua!!! (and it integrates with git 🔥)",
+            "tech": [
+                "c",
+                "lua",
+                "libgit2",
+                "cmake"
+            ]
+        },
+        {
+            "name": "quickmark.nvim",
+            "url": "https://github.com/jmattaa/quickmark.nvim",
+            "description": "a neovim plugin for marking files and then jumping to them quickly",
+            "tech": [
+                "lua",
+                "neovim"
+            ]
+        },
+        {
+            "name": "scripts",
+            "url": "https://github.com/jmattaa/scripts",
+            "description": "a collection of random shell scripts",
+            "tech": [
+                "shell scripting",
+                "sh"
+            ]
+        }
+    ]
 }
