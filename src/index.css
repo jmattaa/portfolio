@@ -48,5 +48,5 @@ html {
 }
 
 mark {
-    @apply bg-palette-5 text-black px-1;
+    @apply bg-palette-5 text-palette-1 px-1;
 }

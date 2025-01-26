@@ -1,12 +1,13 @@
 export default function Contact() {
     return (
-        <div className="p-8 [&_input]:!text-palette-1
-                        [&_textarea]:!text-palette-1">
+        <div className="p-8 [&_input]:!text-palette-4
+                        [&_textarea]:!text-palette-4
+                        !text-palette-5">
             <h1 className="text-4xl font-bold mb-6">Contact Me</h1>
             <div className="m-8">
                 <div className="mt-4 flex">
                     <div className="flex items-center justify-between gap-2">
-                        <span className="text-palette-1">&gt;</span> Name:
+                        <span className="text-palette-3">&gt;</span> Name:
                     </div>
                     <input
                         type="text"
@@ -16,7 +17,7 @@ export default function Contact() {
                 </div>
                 <div className="mt-4 flex">
                     <div className="flex items-center justify-between gap-2">
-                        <span className="text-palette-1">&gt;</span> Email:
+                        <span className="text-palette-3">&gt;</span> Email:
                     </div>
                     <input
                         type="email"
@@ -27,7 +28,7 @@ export default function Contact() {
                 </div>
                 <div className="mt-4">
                     <div>
-                        <span className="text-palette-1">&gt;</span> Message:
+                        <span className="text-palette-3">&gt;</span> Message:
                     </div>
                     <textarea
                         placeholder="Tell me something"
@@ -37,7 +38,7 @@ export default function Contact() {
                     ></textarea>
                 </div>
                 <div className="mt-6">
-                    <button className="bg-palette-4 text-black px-4 py-2 
+                    <button className="bg-palette-4 text-palette-1 px-4 py-2 
                                     rounded transition hover:bg-palette-5
                                     active:scale-9
                                     active:scale-955">
