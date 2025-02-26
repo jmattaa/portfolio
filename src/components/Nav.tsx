@@ -1,5 +1,4 @@
 import { useState } from "react";
-import conf from "../tailwind-config";
 import { Link, useLocation } from "react-router-dom";
 
 const Nav = () => {
@@ -38,8 +37,8 @@ const Nav = () => {
                                 after:transition-[opacity,transform]
                                 after:duration-300 
                                 hover:after:opacity-100
-                                hover:after:scale-x-[1]
-                                ${isActive(url) ? "bg-palette-5 !text-palette-1" : ""}`}
+                                hover:after:scale-x-1
+                                ${isActive(url) ? "bg-palette-5 text-palette-1!" : ""}`}
                     onMouseEnter={(e) => {
                         const target = e.target as HTMLElement;
                         target.style.
@@ -66,7 +65,7 @@ const Nav = () => {
 
     return (
         <nav className="sticky lg:fixed top-0 left-0 z-50 w-full 
-                        shadow-md bg-palette-2/20 backdrop-blur-sm p-8 lg:w-1/4
+                        shadow-md bg-palette-2/20 backdrop-blur-xs p-8 lg:w-1/4
                         lg:bg-palette-1/0 lg:shadow-none lg:top-8 lg:p-0
                         lg:backdrop-blur-none">
             <div
@@ -86,7 +85,7 @@ const Nav = () => {
                     <svg width="32px" height="32px" viewBox="0 0 24 24"
                         fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 8H13.75M5 12H19M10.25 16L19 16"
-                            stroke={conf.theme.colors["palette-5"]}
+                            stroke="currentColor" strokeWidth="2"
                             strokeLinecap="round"
                         />
                     </svg>
@@ -96,12 +95,12 @@ const Nav = () => {
                         fixed top-0 left-0 w-full h-0 bg-black
                         transition-[height,opacity] duration-200
                         ${menuState ?
-                            "flex !h-screen opacity-90" :
+                            "flex h-screen! opacity-90" :
                             "opacity-0 h-0 pointer-events-none"
                         }
                     `}>
                         <div className="w-full h-full flex flex-col items-center 
-                                        justify-center [&>*]:my-6">
+                                        justify-center *:my-6">
                             {navContent}
                         </div>
                     </div>

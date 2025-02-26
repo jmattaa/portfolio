@@ -12,7 +12,7 @@ export default function Contact() {
                     <input
                         type="text"
                         placeholder="jmattaa..."
-                        className="bg-palette-1/0 border-none outline-none w-full p-2"
+                        className="bg-palette-1/0 border-none outline-hidden w-full p-2"
                     />
                 </div>
                 <div className="mt-4 flex">
@@ -22,7 +22,7 @@ export default function Contact() {
                     <input
                         type="email"
                         placeholder="jmattaa@something.yeh"
-                        className="bg-palette-1/0 border-none outline-none 
+                        className="bg-palette-1/0 border-none outline-hidden 
                     w-full p-2"
                     />
                 </div>
@@ -32,7 +32,7 @@ export default function Contact() {
                     </div>
                     <textarea
                         placeholder="Tell me something"
-                        className="bg-palette-1/0 border-none outline-none 
+                        className="bg-palette-1/0 border-none outline-hidden 
                                 w-full p-2 h-32 focus:outline-palette-5
                                 transition-all"
                     ></textarea>
@@ -40,8 +40,7 @@ export default function Contact() {
                 <div className="mt-6">
                     <button className="bg-palette-4 text-palette-1 px-4 py-2 
                                     rounded transition hover:bg-palette-5
-                                    active:scale-9
-                                    active:scale-955">
+                                    active:scale-90">
                         Submit
                     </button>
                 </div>

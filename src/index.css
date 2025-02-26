@@ -1,6 +1,46 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+    --color-*: initial;
+    --color-palette-1: #12181d;
+    --color-palette-2: #ffffff;
+    --color-palette-3: #e0e0e0;
+    --color-palette-4: #c0c0c0;
+    --color-palette-5: #a0a0a0;
+    --color-black: #000000;
+
+    --drop-shadow-glow:
+        0 0px 20px rgba(255, 255, 255, 0.35), 0 0px 65px rgba(255, 255, 255, 0.2);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+
+
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+}
 
 :root {
     --mono: 0.53;
@@ -30,21 +70,6 @@ html {
         "wght" var(--wght),
         "slnt" var(--slnt),
         "CRSV" var(--CRSV);
-}
-
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:target:before {
-    content: "";
-    display: block;
-    height: 200px;
-    margin: -200px 0 0;
 }
 
 mark {
