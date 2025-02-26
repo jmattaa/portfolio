@@ -6,12 +6,12 @@ const Projects = () => {
     const projects = projectData.projects as Project[];
 
     return (
-        <div className="p-8">
-            <h1 className="text-4xl font-bold mb-6">Projects</h1>
+        <div className="p-8 container mx-auto">
+                <h1 className="text-4xl font-bold mb-6">Projects</h1>
 
-            {projects.map((project, i) => (
-                <ProjectCard key={i} project={project} />
-            ))}
+                {projects.map((project, i) => (
+                    <ProjectCard key={i} project={project} />
+                ))}
         </div>
     );
 };

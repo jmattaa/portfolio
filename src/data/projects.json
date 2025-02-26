@@ -41,6 +41,18 @@
                 "shell scripting",
                 "sh"
             ]
+        },
+        {
+            "name": "shlr",
+            "url": "https://github.com/jmattaa/shlr",
+            "description": "shell scripts with targets? yeah i know it could be done with functions but this is more fun!",
+            "tech": [
+                "shell scripting",
+                "sh",
+                "c",
+                "lexing",
+                "parsing"
+            ]
         }
     ]
 }
