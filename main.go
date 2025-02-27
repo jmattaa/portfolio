@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 
 	"github.com/jmattaa/portfolio/middleware"
 
@@ -14,7 +15,14 @@ func main() {
 	mux := http.NewServeMux()
 
 	fs := http.FileServer(http.Dir("./dist"))
-	mux.Handle("/", fs)
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		_, err := os.Stat(filepath.Join("./dist", r.URL.Path))
+		if err != nil || os.IsNotExist(err) {
+			http.ServeFile(w, r, "./dist/index.html")
+		} else {
+			fs.ServeHTTP(w, r)
+		}
+	})
 
 	var handler http.Handler = mux
 	if os.Getenv("DEV") == "true" {
