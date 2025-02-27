@@ -26,3 +26,8 @@ source ./scripts/git_filters.sh
 setup_ignore_sha_filter
 #endtarg
 
+#targ clean
+set -x
+rm -rf dist
+rm -rf tmp
+#endtarg
