@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/jmattaa/portfolio/api"
 	"github.com/jmattaa/portfolio/middleware"
 
 	_ "github.com/joho/godotenv/autoload"
@@ -24,6 +25,8 @@ func main() {
 		}
 	})
 
+	api.Setup(mux)
+
 	var handler http.Handler = mux
 	if os.Getenv("DEV") == "true" {
 		handler = middleware.Logger(handler)
@@ -31,3 +34,4 @@ func main() {
 
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), handler))
 }
+

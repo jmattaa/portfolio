@@ -5,12 +5,15 @@
             "url": "#",
             "description": "yeh, it's just this website but it's a project",
             "tech": [
+                "go",
+                "sqlite",
+                "sqlc",
                 "react",
                 "framer motion",
                 "tailwindcss",
                 "vite",
                 "typescript",
-                "(my hacky cms that is basically a bunch of json files)"
+                "my hacky cms with a bunch of json files"
             ]
         },
         {
