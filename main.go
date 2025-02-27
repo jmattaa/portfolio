@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/jmattaa/portfolio/admin"
 	"github.com/jmattaa/portfolio/api"
 	"github.com/jmattaa/portfolio/middleware"
 
@@ -26,12 +27,14 @@ func main() {
 	})
 
 	api.Setup(mux)
+    admin.Setup(mux)
 
 	var handler http.Handler = mux
 	if os.Getenv("DEV") == "true" {
 		handler = middleware.Logger(handler)
 	}
 
+	log.Printf("Listening on port %s", os.Getenv("PORT"))
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), handler))
 }
 
