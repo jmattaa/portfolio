@@ -3,11 +3,12 @@ sqlc_plugin_dir="sqlc-ts-sqlite"
 
 PS4=''
 
-#targ run
+#targ dev
 set -x
-# this is shit rn, fix it so we can do dev stuff
-pnpm run build
-go run main.go
+air &
+pnpm run dev & 
+
+wait
 #endtarg
 
 #targ gooseUp
