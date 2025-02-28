@@ -43,10 +43,39 @@
         border-radius: 4px;
         cursor: pointer;
     }
+
+    label {
+        text-transform: uppercase;
+    }
+
+    .errors {
+        color: red;
+        text-align: center;
+    }
+    
+    .errors ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .errors li {
+        margin: 0.5rem 0;
+    }
 </style>
 {{ end }}
 
 {{ define "content" }}
+
+{{ if .Errors }}
+<div class="errors">
+    <ul>
+        {{ range .Errors }}
+        <li>{{ . }}</li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}
 
 <form method="post">
     <div class="inputs-container">

@@ -12,7 +12,8 @@ func Setup(mux *http.ServeMux) {
 
     adminMux.HandleFunc("/", http.NotFound)
 	adminMux.HandleFunc("/{$}", home)
-    adminMux.HandleFunc("/writing", writing)
+    adminMux.HandleFunc("GET /writing", writing)
+    adminMux.HandleFunc("POST /writing", writingPost)
 
 	mux.Handle(
 		"/admin/",
