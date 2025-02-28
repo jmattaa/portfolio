@@ -7,27 +7,32 @@ func writing(w http.ResponseWriter, r *http.Request) {
 }
 
 func writingPost(w http.ResponseWriter, r *http.Request) {
-	title := r.FormValue("title")
-	content := r.FormValue("content")
+    title := r.FormValue("title")
+    content := r.FormValue("content")
 
-	errs := []string{}
+    errs := []string{}
 
-	if title == "" {
-		errs = append(errs, "Title is required")
-	}
-	if content == "" {
-		errs = append(errs, "Content is required")
-	}
+    if title == "" {
+        errs = append(errs, "Title is required")
+    }
+    if content == "" {
+        errs = append(errs, "Content is required")
+    }
 
-	if len(errs) > 0 {
-		renderTemplate(w, "admin/html/writing.html", struct {
-			Errors []string
-		}{
-			Errors: errs,
-		})
+    if len(errs) > 0 {
+        renderTemplate(w, "admin/html/writing.html", struct {
+            Errors  []string
+            Title   string
+            Content string
+        }{
+            Errors:  errs,
+            Title:   title,
+            Content: content,
+        })
 
-		return
-	}
+        return
+    }
 
-	println(title, content)
+    println(title, content)
 }
+
