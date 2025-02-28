@@ -20,8 +20,10 @@ func main() {
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		_, err := os.Stat(filepath.Join("./dist", r.URL.Path))
 		if err != nil || os.IsNotExist(err) {
+            // react router takes care
 			http.ServeFile(w, r, "./dist/index.html")
 		} else {
+            // static files
 			fs.ServeHTTP(w, r)
 		}
 	})

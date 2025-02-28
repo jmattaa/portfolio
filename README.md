@@ -13,7 +13,7 @@ it dosen't have to look good cuz it's only for me to use.
 DEV=(true|false)
 PORT=
 
-DB_SOURCE
+DB_SOURCE=
 
 API_KEY=
 

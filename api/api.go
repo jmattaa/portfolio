@@ -13,8 +13,3 @@ func Setup(mux *http.ServeMux) {
 
 	mux.Handle("/api/", http.StripPrefix("/api", middleware.ApiKey(apiMux)))
 }
-
-func writing(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-    w.Write([]byte("Writing"))
-}

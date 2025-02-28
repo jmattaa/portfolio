@@ -2,6 +2,7 @@ package admin
 
 import (
 	"net/http"
+	"text/template"
 
 	"github.com/jmattaa/portfolio/middleware"
 )
@@ -9,7 +10,9 @@ import (
 func Setup(mux *http.ServeMux) {
 	adminMux := http.NewServeMux()
 
-	adminMux.HandleFunc("/", home)
+    adminMux.HandleFunc("/", http.NotFound)
+	adminMux.HandleFunc("/{$}", home)
+    adminMux.HandleFunc("/writing", writing)
 
 	mux.Handle(
 		"/admin/",
@@ -17,7 +20,15 @@ func Setup(mux *http.ServeMux) {
 	)
 }
 
-func home(w http.ResponseWriter, r *http.Request) {
-    w.WriteHeader(http.StatusOK)
-    w.Write([]byte("Admin Home"))
+func renderTemplate(w http.ResponseWriter, name string, data any) {
+	templ, err := template.ParseFiles("admin/html/layout.html", name)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	err = templ.ExecuteTemplate(w, "layout", data)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
