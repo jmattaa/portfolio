@@ -5,7 +5,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jmattaa admin - {{ .Title }}</title>
+    <title>{{ template "title" . }}</title>
+
+    <style>
+        @font-face {
+            font-family: "Recursive";
+            src:
+                local("Recursive"),
+                url("/fonts/Recursive_VF_1.085.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 100 900;
+        }
+
+        :root {
+            --mono: 0.53;
+            --casl: 1;
+            --wght: 490;
+            --slnt: 0;
+            --CRSV: 1;
+        }
+
+        body {
+            background-color: Canvas;
+            color: CanvasText;
+            color-scheme: light dark;
+
+            font-family: "Recursive";
+            font-variation-settings:
+                "MONO" var(--mono),
+                "CASL" var(--casl),
+                "wght" var(--wght),
+                "slnt" var(--slnt),
+                "CRSV" var(--CRSV);
+        }
+    </style>
+
+    {{ template "styles" .}}
 </head>
 
 <body>
