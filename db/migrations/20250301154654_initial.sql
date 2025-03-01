@@ -1,3 +1,5 @@
+-- +goose Up
+-- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS Blogs (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
@@ -5,3 +7,9 @@ CREATE TABLE IF NOT EXISTS Blogs (
     slug TEXT NOT NULL UNIQUE,
     created_at DATETIME DEFAULT (CURRENT_TIMESTAMP)
 );
+-- +goose StatementEnd
+
+-- +goose Down
+-- +goose StatementBegin
+DROP TABLE IF EXISTS Blogs;
+-- +goose StatementEnd

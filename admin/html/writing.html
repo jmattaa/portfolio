@@ -17,7 +17,8 @@
         text-align: center;
     }
 
-    input, textarea {
+    input,
+    textarea {
         width: 100%;
         padding: 0.5rem;
         border: 1px solid #ccc;
@@ -30,7 +31,8 @@
         height: 150px;
     }
 
-    input:focus, textarea:focus {
+    input:focus,
+    textarea:focus {
         outline: none;
         border-color: #0e6ff5;
     }
@@ -52,13 +54,13 @@
         color: red;
         text-align: center;
     }
-    
+
     .errors ul {
         list-style-type: none;
         padding: 0;
         margin: 0;
     }
-    
+
     .errors li {
         margin: 0.5rem 0;
     }
@@ -86,6 +88,11 @@
     <div class="inputs-container">
         <label for="content">Content</label>
         <textarea name="content" id="content">{{ with .Content }}{{ . }}{{ end }}</textarea>
+    </div>
+
+    <div class="inputs-container">
+        <label for="slug">Slug</label>
+        <input type="text" name="slug" id="slug" value="{{ with .Slug }}{{ . }}{{ end }}">
     </div>
 
     <input type="submit" value="Submit">

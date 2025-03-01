@@ -21,11 +21,6 @@ goose up
 source ./scripts/envsetup.sh
 #endtarg
 
-#targ setup_git_filters
-source ./scripts/git_filters.sh
-setup_ignore_sha_filter
-#endtarg
-
 #targ clean
 set -x
 rm -rf dist

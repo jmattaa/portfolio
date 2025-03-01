@@ -4,16 +4,17 @@ import (
 	"net/http"
 	"text/template"
 
+	"github.com/jmattaa/portfolio/db"
 	"github.com/jmattaa/portfolio/middleware"
 )
 
-func Setup(mux *http.ServeMux) {
+func Setup(mux *http.ServeMux, queries *db.Queries) {
 	adminMux := http.NewServeMux()
 
     adminMux.HandleFunc("/", http.NotFound)
 	adminMux.HandleFunc("/{$}", home)
     adminMux.HandleFunc("GET /writing", writing)
-    adminMux.HandleFunc("POST /writing", writingPost)
+    adminMux.HandleFunc("POST /writing", writingPost(queries))
 
 	mux.Handle(
 		"/admin/",
