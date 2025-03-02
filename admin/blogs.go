@@ -28,6 +28,7 @@ type BlogFormProps struct {
 	Title   string
 	Content string
 	Slug    string
+	ID      int64
 }
 
 func blogForm(queries *db.Queries) http.HandlerFunc {
@@ -35,26 +36,33 @@ func blogForm(queries *db.Queries) http.HandlerFunc {
 		props := BlogFormProps{}
 
 		idstr := r.URL.Query().Get("id")
-		id, err := strconv.ParseInt(idstr, 10, 64)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusBadRequest)
-			return
-		}
+		if idstr != "" {
+			var err error
+			id, err := strconv.ParseInt(idstr, 10, 64)
+			if err != nil {
+				http.Error(w, "Invalid Blog ID", http.StatusBadRequest)
+				return
+			}
 
-		blog, err := queries.GetBlog(r.Context(), id)
-		if err == nil {
+			blog, err := queries.GetBlog(r.Context(), id)
+			if err != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
+
 			props.Title = blog.Title
 			props.Content = blog.Content
 			props.Slug = blog.Slug
+			props.ID = blog.ID
 		}
 
 		renderTemplate(w, "admin/html/blogsForm.html", props)
 	}
 }
 
-// TODO HANDLE IF THE BLOG EXISTS
 func postBlog(queries *db.Queries) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		idstr := r.URL.Query().Get("id")
 		title := r.FormValue("title")
 		content := r.FormValue("content")
 		slug := r.FormValue("slug")
@@ -82,14 +90,37 @@ func postBlog(queries *db.Queries) http.HandlerFunc {
 			return
 		}
 
-		_, err := queries.CreateBlog(r.Context(), db.CreateBlogParams{
+		// why is it 0 sometimes idk?? TODO CHECK THIS
+		if idstr == "" || idstr == "0" {
+			_, err := queries.CreateBlog(r.Context(), db.CreateBlogParams{
+				Title:   title,
+				Content: content,
+				Slug:    slug,
+			})
+			if err != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+			}
+
+            http.Redirect(w, r, "/admin/blogs", http.StatusSeeOther)
+			return
+		}
+
+		id, err := strconv.ParseInt(idstr, 10, 64)
+		if err != nil {
+			http.Error(w, "Invalid Blog ID", http.StatusBadRequest)
+			return
+		}
+		_, err = queries.UpdateBlog(r.Context(), db.UpdateBlogParams{
+			ID:      id,
 			Title:   title,
 			Content: content,
 			Slug:    slug,
 		})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
+            return
 		}
+
+		http.Redirect(w, r, "/admin/blogs", http.StatusSeeOther)
 	}
 }

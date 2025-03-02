@@ -1,6 +1,6 @@
 -- +goose Up
 -- +goose StatementBegin
-CREATE TABLE IF NOT EXISTS Blogs (
+CREATE TABLE IF NOT EXISTS blogs (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     content TEXT NOT NULL,
@@ -11,5 +11,5 @@ CREATE TABLE IF NOT EXISTS Blogs (
 
 -- +goose Down
 -- +goose StatementBegin
-DROP TABLE IF EXISTS Blogs;
+DROP TABLE IF EXISTS blogs;
 -- +goose StatementEnd

@@ -2,6 +2,14 @@
 
 {{ define "styles" }}
 <style>
+    main {
+        width: 80vh;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
     a {
         background-color: #af3f94;
         color: #f0f0f0;
@@ -51,33 +59,38 @@
 {{ end }}
 
 {{ define "content" }}
-<h2>blogs</h2>
-<table>
-    <thead>
+<main>
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+        <h2>blogs</h2>
+        <a href="/admin/blogForm">new blog</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Slug</th>
+                <th>Id</th>
+                <th></th>
+            </tr>
+        </thead>
+        {{ range .Blogs }}
         <tr>
-            <th>Title</th>
-            <th>Slug</th>
-            <th>Id</th>
-            <th></th>
-        </tr>
-    </thead>
-    {{ range .Blogs }}
-    <tr>
-        <td>{{ .Title }}</td>
-        <td>{{ .Slug }}</td>
-        <td>{{ .ID }}</td>
-        <td>
-            <div class="dropdown">
-                <button class="dropbtn">...</button>
-                <div class="dropdown-content">
-                    <a href="/admin/blogForm?id={{ .ID }}">edit</a>
-                    <a href="/admin/blogs/delete/{{ .ID }}" class="danger">
-                        delete
-                    </a>
+            <td>{{ .Title }}</td>
+            <td>{{ .Slug }}</td>
+            <td>{{ .ID }}</td>
+            <td>
+                <div class="dropdown">
+                    <button class="dropbtn">...</button>
+                    <div class="dropdown-content">
+                        <a href="/admin/blogForm?id={{ .ID }}">edit</a>
+                        <a href="/admin/blogs/delete/{{ .ID }}" class="danger">
+                            delete
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </td>
-    </tr>
-    {{ end }}
-</table>
+            </td>
+        </tr>
+        {{ end }}
+    </table>
+</main>
 {{ end }}

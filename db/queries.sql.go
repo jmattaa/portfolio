@@ -10,7 +10,11 @@ import (
 )
 
 const createBlog = `-- name: CreateBlog :one
-INSERT INTO Blogs (title, content, slug) 
+INSERT INTO blogs (
+    title, 
+    content, 
+    slug
+) 
 VALUES (?, ?, ?)
 RETURNING id, title, content, slug, created_at
 `
@@ -35,7 +39,7 @@ func (q *Queries) CreateBlog(ctx context.Context, arg CreateBlogParams) (Blog, e
 }
 
 const getBlog = `-- name: GetBlog :one
-SELECT id, title, content, slug, created_at FROM Blogs WHERE id = ?
+SELECT id, title, content, slug, created_at FROM blogs WHERE id = ?
 `
 
 func (q *Queries) GetBlog(ctx context.Context, id int64) (Blog, error) {
@@ -52,7 +56,7 @@ func (q *Queries) GetBlog(ctx context.Context, id int64) (Blog, error) {
 }
 
 const listBlogs = `-- name: ListBlogs :many
-SELECT id, title, content, slug, created_at FROM Blogs ORDER BY created_at
+SELECT id, title, content, slug, created_at FROM blogs ORDER BY created_at
 `
 
 func (q *Queries) ListBlogs(ctx context.Context) ([]Blog, error) {
@@ -82,4 +86,38 @@ func (q *Queries) ListBlogs(ctx context.Context) ([]Blog, error) {
 		return nil, err
 	}
 	return items, nil
+}
+
+const updateBlog = `-- name: UpdateBlog :one
+UPDATE blogs SET
+    title = ?,
+    content = ?,
+    slug = ?
+WHERE id = ?
+RETURNING id, title, content, slug, created_at
+`
+
+type UpdateBlogParams struct {
+	Title   string
+	Content string
+	Slug    string
+	ID      int64
+}
+
+func (q *Queries) UpdateBlog(ctx context.Context, arg UpdateBlogParams) (Blog, error) {
+	row := q.db.QueryRowContext(ctx, updateBlog,
+		arg.Title,
+		arg.Content,
+		arg.Slug,
+		arg.ID,
+	)
+	var i Blog
+	err := row.Scan(
+		&i.ID,
+		&i.Title,
+		&i.Content,
+		&i.Slug,
+		&i.CreatedAt,
+	)
+	return i, err
 }
