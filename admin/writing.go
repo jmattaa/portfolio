@@ -2,15 +2,58 @@ package admin
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/jmattaa/portfolio/db"
 )
 
-func writing(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "admin/html/writing.html", nil)
+func blogs(queries *db.Queries) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		blogs, err := queries.ListBlogs(r.Context())
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		renderTemplate(w, "admin/html/blogs.html", struct {
+			Blogs []db.Blog
+		}{
+			Blogs: blogs,
+		})
+	}
 }
 
-func writingPost(queries *db.Queries) http.HandlerFunc {
+type BlogFormProps struct {
+	Errors  []string
+	Title   string
+	Content string
+	Slug    string
+}
+
+func blogForm(queries *db.Queries) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		props := BlogFormProps{}
+
+		idstr := r.URL.Query().Get("id")
+		id, err := strconv.ParseInt(idstr, 10, 64)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+
+		blog, err := queries.GetBlog(r.Context(), id)
+		if err == nil {
+			props.Title = blog.Title
+			props.Content = blog.Content
+			props.Slug = blog.Slug
+		}
+
+		renderTemplate(w, "admin/html/blogsForm.html", props)
+	}
+}
+
+// TODO HANDLE IF THE BLOG EXISTS
+func postBlog(queries *db.Queries) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		title := r.FormValue("title")
 		content := r.FormValue("content")
@@ -29,12 +72,7 @@ func writingPost(queries *db.Queries) http.HandlerFunc {
 		}
 
 		if len(errs) > 0 {
-			renderTemplate(w, "admin/html/writing.html", struct {
-				Errors  []string
-				Title   string
-				Content string
-				Slug    string
-			}{
+			renderTemplate(w, "admin/html/blogsForm.html", BlogFormProps{
 				Errors:  errs,
 				Title:   title,
 				Content: content,
@@ -44,14 +82,14 @@ func writingPost(queries *db.Queries) http.HandlerFunc {
 			return
 		}
 
-        _, err := queries.CreateBlog(r.Context(), db.CreateBlogParams{
-            Title:   title,
-            Content: content,
-            Slug:    slug,
-        })
-        if err != nil {
-            http.Error(w, err.Error(), http.StatusInternalServerError)
-            return
-        }
+		_, err := queries.CreateBlog(r.Context(), db.CreateBlogParams{
+			Title:   title,
+			Content: content,
+			Slug:    slug,
+		})
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
 	}
 }

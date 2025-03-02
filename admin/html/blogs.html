@@ -1,0 +1,83 @@
+{{ define "title" }}jmattaa admin - writing{{ end }}
+
+{{ define "styles" }}
+<style>
+    a {
+        background-color: #af3f94;
+        color: #f0f0f0;
+        text-decoration: none;
+        border: none;
+        padding: 0.5rem;
+        border-radius: 4px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    .danger {
+        background-color: #f00;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: flex;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        min-width: 160px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        z-index: 1;
+
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+</style>
+{{ end }}
+
+{{ define "content" }}
+<h2>blogs</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Slug</th>
+            <th>Id</th>
+            <th></th>
+        </tr>
+    </thead>
+    {{ range .Blogs }}
+    <tr>
+        <td>{{ .Title }}</td>
+        <td>{{ .Slug }}</td>
+        <td>{{ .ID }}</td>
+        <td>
+            <div class="dropdown">
+                <button class="dropbtn">...</button>
+                <div class="dropdown-content">
+                    <a href="/admin/blogForm?id={{ .ID }}">edit</a>
+                    <a href="/admin/blogs/delete/{{ .ID }}" class="danger">
+                        delete
+                    </a>
+                </div>
+            </div>
+        </td>
+    </tr>
+    {{ end }}
+</table>
+{{ end }}
