@@ -57,6 +57,16 @@
         padding: 0.5rem;
     }
 </style>
+
+<script>
+    function confirmDelete(event) {
+        if (!confirm("Are you sure you want to delete this blog?")) {
+            event.preventDefault(); 
+            return false;
+        }
+        return true; 
+    }
+</script>
 {{ end }}
 
 {{ define "content" }}
@@ -85,10 +95,11 @@
                     <div class="dropdown-content">
                         <a href="/admin/blogForm?id={{ .ID }}">edit</a>
                         <form action="/admin/deleteBlog" method="post"
-                            style="width: 100%; display: flex; justify-content: space-between;">
+                            style="width: 100%; display: flex; justify-content: space-between;"
+                            onsubmit="return confirmDelete(event);">
                             <input type="hidden" name="id" value="{{ .ID }}">
                             <input type="submit" value="delete" class="danger a">
-                        </form>
+
                     </div>
                 </div>
             </td>
