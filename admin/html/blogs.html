@@ -10,7 +10,8 @@
         gap: 2rem;
     }
 
-    a {
+    a,
+    .a {
         background-color: #af3f94;
         color: #f0f0f0;
         text-decoration: none;
@@ -83,9 +84,11 @@
                     <button class="dropbtn">...</button>
                     <div class="dropdown-content">
                         <a href="/admin/blogForm?id={{ .ID }}">edit</a>
-                        <a href="/admin/blogs/delete/{{ .ID }}" class="danger">
-                            delete
-                        </a>
+                        <form action="/admin/deleteBlog" method="post"
+                            style="width: 100%; display: flex; justify-content: space-between;">
+                            <input type="hidden" name="id" value="{{ .ID }}">
+                            <input type="submit" value="delete" class="danger a">
+                        </form>
                     </div>
                 </div>
             </td>

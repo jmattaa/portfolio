@@ -20,3 +20,6 @@ UPDATE blogs SET
     slug = ?
 WHERE id = ?
 RETURNING *;
+
+-- name: DeleteBlog :exec
+DELETE FROM blogs WHERE id = ?;

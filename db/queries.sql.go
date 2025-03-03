@@ -38,6 +38,15 @@ func (q *Queries) CreateBlog(ctx context.Context, arg CreateBlogParams) (Blog, e
 	return i, err
 }
 
+const deleteBlog = `-- name: DeleteBlog :exec
+DELETE FROM blogs WHERE id = ?
+`
+
+func (q *Queries) DeleteBlog(ctx context.Context, id int64) error {
+	_, err := q.db.ExecContext(ctx, deleteBlog, id)
+	return err
+}
+
 const getBlog = `-- name: GetBlog :one
 SELECT id, title, content, slug, created_at FROM blogs WHERE id = ?
 `
