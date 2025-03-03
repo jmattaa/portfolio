@@ -1,4 +1,4 @@
-export default function Contact() {
+const Contact = () => {
     return (
         <div className="p-8 [&_input]:!text-palette-4
                         [&_textarea]:!text-palette-4
@@ -47,5 +47,6 @@ export default function Contact() {
             </div>
         </div>
     );
-}
+};
 
+export default Contact;

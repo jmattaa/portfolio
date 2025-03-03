@@ -1,17 +1,10 @@
 import { useEffect, useState } from "react";
-
-// TODO: can we do something to get this from the go?
-interface Blog {
-    Title: string;
-    Content: string;
-    Slug: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    CreatedAt: { Time: string };
-    Id: number;
-}
+import { Link } from "react-router-dom";
+import { BlogType } from "../interfaces";
+import { jmFormatDateStr } from "../utils";
 
 const Writing = () => {
-    const [blogs, setBlogs] = useState<Blog[]>([]);
+    const [blogs, setBlogs] = useState<BlogType[]>([]);
     const [loading, setLoading] = useState(true);
     const [err, setErr] = useState<Error | null>(null);
 
@@ -33,8 +26,6 @@ const Writing = () => {
             .finally(() => setLoading(false));
     }, []);
 
-    console.log(blogs);
-
     return (
         <div className="p-8">
             <h1 className="text-4xl font-bold mb-6">Writing</h1>
@@ -46,11 +37,23 @@ const Writing = () => {
 
             <div className="flex flex-col gap-4 mt-4">
                 {blogs.map((blog) => (
-                    <div key={blog.Id} className="p-6 bg-palette-5/10 rounded-2xl">
-                        <h2 className="text-2xl font-bold mb-2">{blog.Title}</h2>
-                        <p className="mb-4">{blog.Content}</p>
-                        <p className="text-sm text-palette-5/50">{blog.CreatedAt.Time}</p>
-                    </div>
+                    <Link to={`/writing/${blog.Slug}`} key={blog.Id}>
+                        <div className="p-6 bg-palette-3/20 rounded-2xl 
+                                        text-palette-5 hover:bg-palette-4/40
+                                        hover:shadow-lg hover:scale-105
+                                        transition-all duration-300">
+                            <h2 className="text-2xl font-semibold mb-2">
+                                {blog.Title}
+                            </h2>
+                            <p className="text-sm text-palette-5/80 mb-4">
+                                {jmFormatDateStr(blog.CreatedAt.Time)}
+                            </p>
+                            {
+                                blog.Description.Valid &&
+                                <p>{blog.Description.String}</p>
+                            }
+                        </div>
+                    </Link>
                 ))}
             </div>
         </div>

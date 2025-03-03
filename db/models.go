@@ -9,9 +9,10 @@ import (
 )
 
 type Blog struct {
-	ID        int64
-	Title     string
-	Content   string
-	Slug      string
-	CreatedAt sql.NullTime
+	ID          int64
+	Title       string
+	Content     string
+	Description sql.NullString
+	Slug        string
+	CreatedAt   sql.NullTime
 }

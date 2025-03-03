@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS blogs (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     content TEXT NOT NULL,
+    description TEXT,
     slug TEXT NOT NULL UNIQUE,
     created_at DATETIME DEFAULT (CURRENT_TIMESTAMP)
 );

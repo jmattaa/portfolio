@@ -1,6 +1,7 @@
 package admin
 
 import (
+	"database/sql"
 	"net/http"
 	"strconv"
 
@@ -24,11 +25,12 @@ func blogs(queries *db.Queries) http.HandlerFunc {
 }
 
 type BlogFormProps struct {
-	Errors  []string
-	Title   string
-	Content string
-	Slug    string
-	ID      int64
+	Errors      []string
+	Title       string
+	Description string
+	Content     string
+	Slug        string
+	ID          int64
 }
 
 func blogForm(queries *db.Queries) http.HandlerFunc {
@@ -51,6 +53,7 @@ func blogForm(queries *db.Queries) http.HandlerFunc {
 			}
 
 			props.Title = blog.Title
+            props.Description = blog.Description.String
 			props.Content = blog.Content
 			props.Slug = blog.Slug
 			props.ID = blog.ID
@@ -67,11 +70,19 @@ func postBlog(queries *db.Queries) http.HandlerFunc {
 		content := r.FormValue("content")
 		slug := r.FormValue("slug")
 
+		descriptionFormValue := r.FormValue("description")
+		description := sql.NullString{
+			String: descriptionFormValue,
+			Valid:  descriptionFormValue != "",
+		}
+
 		errs := []string{}
 
 		if title == "" {
 			errs = append(errs, "Title is required")
 		}
+		// description can be empty
+
 		if content == "" {
 			errs = append(errs, "Content is required")
 		}
@@ -81,10 +92,11 @@ func postBlog(queries *db.Queries) http.HandlerFunc {
 
 		if len(errs) > 0 {
 			renderTemplate(w, "admin/html/blogsForm.html", BlogFormProps{
-				Errors:  errs,
-				Title:   title,
-				Content: content,
-				Slug:    slug,
+				Errors:      errs,
+				Title:       title,
+				Description: description.String,
+				Content:     content,
+				Slug:        slug,
 			})
 
 			return
@@ -93,15 +105,16 @@ func postBlog(queries *db.Queries) http.HandlerFunc {
 		// why is it 0 sometimes idk?? TODO CHECK THIS
 		if idstr == "" || idstr == "0" {
 			_, err := queries.CreateBlog(r.Context(), db.CreateBlogParams{
-				Title:   title,
-				Content: content,
-				Slug:    slug,
+				Title:       title,
+				Description: description,
+				Content:     content,
+				Slug:        slug,
 			})
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 			}
 
-            http.Redirect(w, r, "/admin/blogs", http.StatusSeeOther)
+			http.Redirect(w, r, "/admin/blogs", http.StatusSeeOther)
 			return
 		}
 
@@ -111,14 +124,15 @@ func postBlog(queries *db.Queries) http.HandlerFunc {
 			return
 		}
 		_, err = queries.UpdateBlog(r.Context(), db.UpdateBlogParams{
-			ID:      id,
-			Title:   title,
-			Content: content,
-			Slug:    slug,
+			ID:          id,
+			Title:       title,
+			Description: description,
+			Content:     content,
+			Slug:        slug,
 		})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
-            return
+			return
 		}
 
 		http.Redirect(w, r, "/admin/blogs", http.StatusSeeOther)

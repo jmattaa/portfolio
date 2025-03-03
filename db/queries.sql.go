@@ -7,31 +7,40 @@ package db
 
 import (
 	"context"
+	"database/sql"
 )
 
 const createBlog = `-- name: CreateBlog :one
 INSERT INTO blogs (
     title, 
     content, 
-    slug
+    slug,
+    description
 ) 
-VALUES (?, ?, ?)
-RETURNING id, title, content, slug, created_at
+VALUES (?, ?, ?, ?)
+RETURNING id, title, content, description, slug, created_at
 `
 
 type CreateBlogParams struct {
-	Title   string
-	Content string
-	Slug    string
+	Title       string
+	Content     string
+	Slug        string
+	Description sql.NullString
 }
 
 func (q *Queries) CreateBlog(ctx context.Context, arg CreateBlogParams) (Blog, error) {
-	row := q.db.QueryRowContext(ctx, createBlog, arg.Title, arg.Content, arg.Slug)
+	row := q.db.QueryRowContext(ctx, createBlog,
+		arg.Title,
+		arg.Content,
+		arg.Slug,
+		arg.Description,
+	)
 	var i Blog
 	err := row.Scan(
 		&i.ID,
 		&i.Title,
 		&i.Content,
+		&i.Description,
 		&i.Slug,
 		&i.CreatedAt,
 	)
@@ -48,7 +57,7 @@ func (q *Queries) DeleteBlog(ctx context.Context, id int64) error {
 }
 
 const getBlog = `-- name: GetBlog :one
-SELECT id, title, content, slug, created_at FROM blogs WHERE id = ?
+SELECT id, title, content, description, slug, created_at FROM blogs WHERE id = ?
 `
 
 func (q *Queries) GetBlog(ctx context.Context, id int64) (Blog, error) {
@@ -58,6 +67,25 @@ func (q *Queries) GetBlog(ctx context.Context, id int64) (Blog, error) {
 		&i.ID,
 		&i.Title,
 		&i.Content,
+		&i.Description,
+		&i.Slug,
+		&i.CreatedAt,
+	)
+	return i, err
+}
+
+const getBlogBySlug = `-- name: GetBlogBySlug :one
+SELECT id, title, content, description, slug, created_at FROM blogs WHERE slug = ?
+`
+
+func (q *Queries) GetBlogBySlug(ctx context.Context, slug string) (Blog, error) {
+	row := q.db.QueryRowContext(ctx, getBlogBySlug, slug)
+	var i Blog
+	err := row.Scan(
+		&i.ID,
+		&i.Title,
+		&i.Content,
+		&i.Description,
 		&i.Slug,
 		&i.CreatedAt,
 	)
@@ -65,7 +93,7 @@ func (q *Queries) GetBlog(ctx context.Context, id int64) (Blog, error) {
 }
 
 const listBlogs = `-- name: ListBlogs :many
-SELECT id, title, content, slug, created_at FROM blogs ORDER BY created_at
+SELECT id, title, content, description, slug, created_at FROM blogs ORDER BY created_at
 `
 
 func (q *Queries) ListBlogs(ctx context.Context) ([]Blog, error) {
@@ -81,6 +109,7 @@ func (q *Queries) ListBlogs(ctx context.Context) ([]Blog, error) {
 			&i.ID,
 			&i.Title,
 			&i.Content,
+			&i.Description,
 			&i.Slug,
 			&i.CreatedAt,
 		); err != nil {
@@ -100,22 +129,25 @@ func (q *Queries) ListBlogs(ctx context.Context) ([]Blog, error) {
 const updateBlog = `-- name: UpdateBlog :one
 UPDATE blogs SET
     title = ?,
+    description = ?,
     content = ?,
     slug = ?
 WHERE id = ?
-RETURNING id, title, content, slug, created_at
+RETURNING id, title, content, description, slug, created_at
 `
 
 type UpdateBlogParams struct {
-	Title   string
-	Content string
-	Slug    string
-	ID      int64
+	Title       string
+	Description sql.NullString
+	Content     string
+	Slug        string
+	ID          int64
 }
 
 func (q *Queries) UpdateBlog(ctx context.Context, arg UpdateBlogParams) (Blog, error) {
 	row := q.db.QueryRowContext(ctx, updateBlog,
 		arg.Title,
+		arg.Description,
 		arg.Content,
 		arg.Slug,
 		arg.ID,
@@ -125,6 +157,7 @@ func (q *Queries) UpdateBlog(ctx context.Context, arg UpdateBlogParams) (Blog, e
 		&i.ID,
 		&i.Title,
 		&i.Content,
+		&i.Description,
 		&i.Slug,
 		&i.CreatedAt,
 	)
