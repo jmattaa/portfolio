@@ -11,7 +11,10 @@ func Setup(mux *http.ServeMux, queries *db.Queries) {
 	apiMux := http.NewServeMux()
 
 	apiMux.HandleFunc("/writing", writing(queries))
-    apiMux.HandleFunc("/writing/{slug}", getBlog(queries))
+	apiMux.HandleFunc("/writing/{slug}", getBlog(queries))
+
+	// TODO maybe add extra middleware?
+	apiMux.HandleFunc("/sendmail", sendEmail)
 
 	mux.Handle("/api/", http.StripPrefix("/api", middleware.ApiKey(apiMux)))
 }
