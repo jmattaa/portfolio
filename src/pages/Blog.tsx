@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BlogType } from "../interfaces";
 import { jmFormatDateStr } from "../utils";
+import parseMarkdown from "../mdRendrer/parser";
 
 const BlogPage = () => {
     const { slug } = useParams();
@@ -24,6 +25,8 @@ const BlogPage = () => {
 
     if (!blog)
         return <p>Loading...</p>;
+
+    parseMarkdown(blog.Content);
 
     return (
         <div className="p-8 container mx-auto">
