@@ -1,0 +1,110 @@
+{{ define "title" }}jmattaa admin - writing{{ end }}
+
+{{ define "styles" }}
+<style>
+    main {
+        width: 80vh;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    a,
+    .a {
+        background-color: #af3f94;
+        color: #f0f0f0;
+        text-decoration: none;
+        border: none;
+        padding: 0.5rem;
+        border-radius: 4px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    .danger {
+        background-color: #f00;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: flex;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        min-width: 160px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        z-index: 1;
+
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+</style>
+
+<script>
+    function confirmDelete(event) {
+        if (!confirm("Are you sure you want to delete this blog?")) {
+            event.preventDefault(); 
+            return false;
+        }
+        return true; 
+    }
+</script>
+{{ end }}
+
+{{ define "content" }}
+<main>
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+        <h2>blogs</h2>
+        <a href="/admin/blogForm">new blog</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Slug</th>
+                <th>Id</th>
+                <th></th>
+            </tr>
+        </thead>
+        {{ range .Blogs }}
+        <tr>
+            <td>{{ .Title }}</td>
+            <td>{{ .Slug }}</td>
+            <td>{{ .ID }}</td>
+            <td>
+                <div class="dropdown">
+                    <button class="dropbtn">...</button>
+                    <div class="dropdown-content">
+                        <a href="/admin/blogForm?id={{ .ID }}">edit</a>
+                        <form action="/admin/deleteBlog" method="post"
+                            style="width: 100%; display: flex; justify-content: space-between;"
+                            onsubmit="return confirmDelete(event);">
+                            <input type="hidden" name="id" value="{{ .ID }}">
+                            <input type="submit" value="delete" class="danger a">
+
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {{ end }}
+    </table>
+</main>
+{{ end }}

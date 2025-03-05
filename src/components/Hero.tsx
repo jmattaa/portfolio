@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import AnimatedText from "../components/AnimatedText";
+import AnimatedText from "./AnimatedText";
 
 const Hero = () => {
     return (
