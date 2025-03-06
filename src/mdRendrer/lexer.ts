@@ -59,7 +59,8 @@ enum TokenType {
 type token = {
     type: TokenType,
     value: string,
-    href?: string
+    href?: string,
+    lang?: string
 }
 
 export {
@@ -143,6 +144,15 @@ function lexCode(): token {
         lexer.i++
     }
 
+    let lang;
+    if (backtickCount === 3) {
+        const start = lexer.i
+        while (lexer.i < lexer.md.length && lexer.md[lexer.i] !== "\n")
+            lexer.i++
+        lang = lexer.md.slice(start, lexer.i).trim()
+        lexer.i++ // skip "\n"
+    }
+
     const start = lexer.i
     if (backtickCount === 1) {
         while (lexer.i < lexer.md.length && lexer.md[lexer.i] !== "`") {
@@ -164,7 +174,8 @@ function lexCode(): token {
 
     return {
         type: backtickCount === 1 ? TokenType.Code : TokenType.MultilineCode,
-        value: codeText
+        value: codeText,
+        lang
     }
 }
 

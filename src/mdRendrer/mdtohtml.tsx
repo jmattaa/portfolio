@@ -48,7 +48,9 @@ const md = (token: token): Record<TokenType, JSX.Element> => ({
         {token.value}
     </code>),
     [TokenType.MultilineCode]: (<pre className="bg-black px-1 py-0.5 rounded">
-        {token.value}
+        <code>
+            {token.value}
+        </code>
     </pre>),
     [TokenType.Link]: (<a href={token.href} className="text-blue-500 underline">
         {token.value}
