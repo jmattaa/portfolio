@@ -1,4 +1,6 @@
 import { TokenType, token } from "./lexer";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { gruvboxDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export default function mdToHtml(token: token): JSX.Element {
     if (token.type === TokenType.Text)
@@ -47,11 +49,11 @@ const md = (token: token): Record<TokenType, JSX.Element> => ({
     [TokenType.Code]: (<code className="bg-black px-1 py-0.5 rounded">
         {token.value}
     </code>),
-    [TokenType.MultilineCode]: (<pre className="bg-black px-1 py-0.5 rounded">
-        <code>
+    [TokenType.MultilineCode]: (
+        <SyntaxHighlighter language={token.lang} style={gruvboxDark}>
             {token.value}
-        </code>
-    </pre>),
+        </SyntaxHighlighter>
+    ),
     [TokenType.Link]: (<a href={token.href} className="text-blue-500 underline">
         {token.value}
     </a>),
