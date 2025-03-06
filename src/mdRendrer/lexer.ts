@@ -4,43 +4,38 @@ const lexer = {
     i: 0, // current pos in md
     // c: string, // current char (md[i])
     tokens: [] as token[],
-}
 
-function lexMarkdown(md: string): token[] {
-    lexer.md = md
-    while (lexer.md[lexer.i] !== undefined) {
-        lexerSkipWhitespace()
+    lexer(md: string) {
+        lexer.md = md
+        lexer.i = 0
+    },
 
-        switch (lexer.md[lexer.i]) {
-            case "#":
-                lexer.tokens.push(lexHeader())
-                break
-            case "[":
-                lexer.tokens.push(lexLink())
-                break
-            case "`":
-                lexer.tokens.push(lexCode())
-                break
-            case "*":
-                lexer.tokens.push(lexBoldItalic())
-                break
-            case "!":
-                lexer.tokens.push(lexImage())
-                break
-            case "-":
-                lexer.tokens.push(lexList())
-                break
-            default:
-                lexer.tokens.push({
-                    type: TokenType.Text,
-                    value: lexer.md[lexer.i]
-                })
+    next: (): token => {
+        while (lexer.md[lexer.i] !== undefined) {
+            switch (lexer.md[lexer.i]) {
+                case "#":
+                    return lexerAdvanceWith(lexHeader())
+                case "[":
+                    return lexerAdvanceWith(lexLink())
+                case "`":
+                    return lexerAdvanceWith(lexCode())
+                case "*":
+                    return lexerAdvanceWith(lexBoldItalic())
+                case "!":
+                    return lexerAdvanceWith(lexImage())
+                case "-":
+                    return lexerAdvanceWith(lexList())
+                default:
+                    return lexerAdvanceWith({
+                        type: TokenType.Text,
+                        value: lexer.md[lexer.i]
+                    })
+            }
         }
 
-        lexer.i++
+        return { type: TokenType.EOF, value: "" }
     }
 
-    return lexer.tokens
 }
 
 enum TokenType {
@@ -53,10 +48,12 @@ enum TokenType {
     Text,
     Link,
     Code,
+    MultilineCode,
     Bold,
     Italic,
     Image,
     ListItem,
+    EOF,
 }
 
 type token = {
@@ -66,14 +63,14 @@ type token = {
 }
 
 export {
-    lexMarkdown as default,
+    lexer as default,
     TokenType,
     type token
 }
 
-function lexerSkipWhitespace(): void {
-    while (lexer.md[lexer.i] === " ")
-        lexer.i++
+function lexerAdvanceWith(token: token): token {
+    lexer.i++
+    return token;
 }
 
 function lexHeader(): token {
@@ -166,7 +163,7 @@ function lexCode(): token {
     lexer.i += backtickCount
 
     return {
-        type: TokenType.Code,
+        type: backtickCount === 1 ? TokenType.Code : TokenType.MultilineCode,
         value: codeText
     }
 }
@@ -252,4 +249,3 @@ function lexList(): token {
         value: listItemText
     }
 }
-
