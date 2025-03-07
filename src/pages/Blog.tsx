@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BlogType } from "../interfaces";
 import { jmFormatDateStr } from "../utils";
+import Markdown from "../mdRendrer/md";
 
 const BlogPage = () => {
     const { slug } = useParams();
@@ -33,7 +34,7 @@ const BlogPage = () => {
             </p>
 
             {/* TODO: render markdown? */}
-            <p>{blog.Content}</p>
+            <Markdown>{blog.Content}</Markdown>
         </div>
     );
 };
