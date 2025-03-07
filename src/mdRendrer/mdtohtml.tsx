@@ -46,7 +46,7 @@ const md = (token: token): Record<TokenType, JSX.Element> => ({
     [TokenType.Image]: <img src={token.href} alt={token.value} />,
     [TokenType.ListItem]: <li>{token.value}</li>,
     [TokenType.Text]: token.value as unknown as JSX.Element, // this be some dumb shi
-    [TokenType.Code]: (<code className="bg-black px-1 py-0.5 rounded">
+    [TokenType.Code]: (<code className="bg-palette-2/60 px-1 py-0.5 rounded text-palette-1">
         {token.value}
     </code>),
     [TokenType.MultilineCode]: (
