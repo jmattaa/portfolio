@@ -28,12 +28,29 @@
             ]
         },
         {
+            "name": "servc",
+            "url": "https://github.com/jmattaa/servc",
+            "description": "a simple http server written in c",
+            "tech": [
+                "c",
+                "yeh it's only c, but it looks bad to just have one tingy, you feel me?"
+            ]
+        },
+        {
             "name": "quickmark.nvim",
             "url": "https://github.com/jmattaa/quickmark.nvim",
             "description": "a neovim plugin for marking files and then jumping to them quickly",
             "tech": [
                 "lua",
                 "neovim"
+            ]
+        },
+        {
+            "name": "golvl",
+            "url": "https://github.com/jmattaa/golvl",
+            "description": "a dead simple level editor, written in go. All it does is edit a file with numbers using a ui. I'm using it for creating levels for a platformer game",
+            "tech": [
+                "go"
             ]
         },
         {
@@ -56,6 +73,12 @@
                 "lexing",
                 "parsing"
             ]
+        },
+        {
+            "name": "you know what just check my github",
+            "url": "https://github.com/jmattaa/",
+            "description": "yeh, i've got all sorta stuff there, just check it out. Maybe you'll find something fun, i've had that account scince i was 11",
+            "tech": []
         }
     ]
 }
