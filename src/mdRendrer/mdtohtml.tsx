@@ -3,11 +3,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { gruvboxDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export default function mdToHtml(token: token): JSX.Element {
-    if (token.type === TokenType.Text)
-        if (token.value === "\n" || token.value === "\r")
-            return <br />;
-
-    return md(token)?.[token.type] ?? <span>{token.value}</span>;
+    return md(token)?.[token.type] ?? <>{token.value}</>
 }
 
 const md = (token: token): Record<TokenType, JSX.Element> => ({
@@ -45,7 +41,6 @@ const md = (token: token): Record<TokenType, JSX.Element> => ({
     [TokenType.Italic]: <em>{token.value}</em>,
     [TokenType.Image]: <img src={token.href} alt={token.value} />,
     [TokenType.ListItem]: <li>{token.value}</li>,
-    [TokenType.Text]: token.value as unknown as JSX.Element, // this be some dumb shi
     [TokenType.Code]: (<code className="bg-palette-2/60 px-1 py-0.5 rounded text-palette-1">
         {token.value}
     </code>),
@@ -57,6 +52,7 @@ const md = (token: token): Record<TokenType, JSX.Element> => ({
     [TokenType.Link]: (<a href={token.href} className="text-blue-500 underline">
         {token.value}
     </a>),
+    [TokenType.Text]: token.value === "\n" ? <br /> : <>{token.value}</>,
 
     [TokenType.EOF]: <></>,
 });
