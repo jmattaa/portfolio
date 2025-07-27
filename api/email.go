@@ -69,7 +69,8 @@ func sendEmail(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 
 		json.NewEncoder(w).Encode(map[string]string{
-			"message": "Failed to send email",
+			"message": "Failed to send email." +
+			" Contact me directly at mattajonathan1[at]gmail[dot]com",
 		})
 
 		println(err.Error())
