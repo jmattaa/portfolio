@@ -19,6 +19,9 @@ import (
 func main() {
 	dbSource := os.Getenv("DB_SOURCE")
 	database, err := sql.Open("sqlite3", dbSource)
+	if err != nil {
+		log.Fatal(err)
+	}
 	defer database.Close()
 
 	if err != nil {
