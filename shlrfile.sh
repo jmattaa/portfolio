@@ -21,6 +21,12 @@ goose up
 source ./scripts/envsetup.sh
 #endtarg
 
+#targ build
+set -x
+pnpm run build
+go build main.go
+#endtarg
+
 #targ clean
 set -x
 rm -rf dist

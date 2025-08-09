@@ -13,6 +13,8 @@ tmp
 dist-ssr
 *.local
 
+main
+
 *.db
 
 .env
