@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import { TokenType, token } from "./lexer";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { gruvboxDark } from "react-syntax-highlighter/dist/esm/styles/hljs";

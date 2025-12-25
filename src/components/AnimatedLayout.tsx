@@ -1,33 +1,33 @@
 import { motion } from "framer-motion";
 
 const pageVariants = {
-    hidden: { 
-        opacity: 0, 
-        scale: 0.9, 
-        rotateX: -15, 
-        filter: "blur(10px)", 
-        transformOrigin: "center" 
+    hidden: {
+        opacity: 0,
+        scale: 0.9,
+        rotateX: -15,
+        filter: "blur(10px)",
+        transformOrigin: "center"
     },
-    enter: { 
-        opacity: 1, 
-        scale: 1, 
-        rotateX: 0, 
-        filter: "blur(0px)", 
+    enter: {
+        opacity: 1,
+        scale: 1,
+        rotateX: 0,
+        filter: "blur(0px)",
         transformOrigin: "center",
         transition: {
             duration: 0.6,
-            ease: [0.22, 1, 0.36, 1]
+            ease: [0.22, 1, 0.36, 1] as const,
         }
     },
-    exit: { 
-        opacity: 0, 
-        scale: 0.9, 
-        rotateX: 15, 
-        filter: "blur(5px)", 
+    exit: {
+        opacity: 0,
+        scale: 0.9,
+        rotateX: 15,
+        filter: "blur(5px)",
         transformOrigin: "center",
         transition: {
             duration: 0.4,
-            ease: [0.7, 0, 0.84, 0]
+            ease: [0.7, 0, 0.84, 0] as const,
         }
     },
 };

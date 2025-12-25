@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import lexer, { TokenType } from "./lexer"
 import mdToHtml from "./mdtohtml";
 
