@@ -8,9 +8,9 @@ import (
 	"github.com/jmattaa/portfolio/db"
 )
 
-func blogs(queries *db.Queries) http.HandlerFunc {
+func blogs(q *db.Queries) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		blogs, err := queries.ListBlogs(r.Context())
+		blogs, err := q.ListBlogs(r.Context())
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -33,7 +33,7 @@ type BlogFormProps struct {
 	ID          int64
 }
 
-func blogForm(queries *db.Queries) http.HandlerFunc {
+func blogForm(q *db.Queries) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		props := BlogFormProps{}
 
@@ -46,7 +46,7 @@ func blogForm(queries *db.Queries) http.HandlerFunc {
 				return
 			}
 
-			blog, err := queries.GetBlog(r.Context(), id)
+			blog, err := q.GetBlog(r.Context(), id)
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 				return
@@ -63,7 +63,7 @@ func blogForm(queries *db.Queries) http.HandlerFunc {
 	}
 }
 
-func postBlog(queries *db.Queries) http.HandlerFunc {
+func postBlog(q *db.Queries) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		idstr := r.URL.Query().Get("id")
 		title := r.FormValue("title")
@@ -104,7 +104,7 @@ func postBlog(queries *db.Queries) http.HandlerFunc {
 
 		// why is it 0 sometimes idk?? TODO CHECK THIS
 		if idstr == "" || idstr == "0" {
-			_, err := queries.CreateBlog(r.Context(), db.CreateBlogParams{
+			_, err := q.CreateBlog(r.Context(), db.CreateBlogParams{
 				Title:       title,
 				Description: description,
 				Content:     content,
@@ -123,7 +123,7 @@ func postBlog(queries *db.Queries) http.HandlerFunc {
 			http.Error(w, "Invalid Blog ID", http.StatusBadRequest)
 			return
 		}
-		_, err = queries.UpdateBlog(r.Context(), db.UpdateBlogParams{
+		_, err = q.UpdateBlog(r.Context(), db.UpdateBlogParams{
 			ID:          id,
 			Title:       title,
 			Description: description,

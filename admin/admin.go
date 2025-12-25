@@ -9,14 +9,14 @@ import (
 	"github.com/jmattaa/portfolio/middleware"
 )
 
-func Setup(mux *http.ServeMux, queries *db.Queries) {
+func Setup(mux *http.ServeMux, q *db.Queries) {
 	adminMux := http.NewServeMux()
 
 	adminMux.HandleFunc("/", http.NotFound)
 	adminMux.HandleFunc("/{$}", home)
-	adminMux.HandleFunc("GET /blogForm", blogForm(queries))
-	adminMux.HandleFunc("POST /blogs", postBlog(queries))
-	adminMux.HandleFunc("GET /blogs", blogs(queries))
+	adminMux.HandleFunc("GET /blogForm", blogForm(q))
+	adminMux.HandleFunc("POST /blogs", postBlog(q))
+	adminMux.HandleFunc("GET /blogs", blogs(q))
 	adminMux.HandleFunc("POST /deleteBlog",
 		func(w http.ResponseWriter, r *http.Request) {
 			idstr := r.FormValue("id")
@@ -26,7 +26,7 @@ func Setup(mux *http.ServeMux, queries *db.Queries) {
 				return
 			}
 
-			queries.DeleteBlog(r.Context(), id)
+			q.DeleteBlog(r.Context(), id)
 			http.Redirect(w, r, "/admin/blogs", http.StatusSeeOther)
 		})
 

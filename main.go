@@ -36,6 +36,8 @@ func main() {
 
 	mux := http.NewServeMux()
 
+	mux.HandleFunc("/writing/rss", api.Rss(queries))
+
 	fs := http.FileServer(http.Dir("./dist"))
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		_, err := os.Stat(filepath.Join("./dist", r.URL.Path))
