@@ -37,7 +37,10 @@ const Writing = () => {
 
             <div className="flex flex-col gap-4 mt-4">
                 {blogs.map((blog) => (
-                    <Link to={`/writing/${blog.Slug}`} key={blog.Id}>
+                    <Link
+                        className="no-underline!"
+                        to={`/writing/${blog.Slug}`}
+                        key={blog.Id}>
                         <div className="p-6 bg-palette-3/20 rounded-2xl 
                                         text-palette-5 hover:bg-palette-4/40
                                         hover:shadow-lg hover:scale-105

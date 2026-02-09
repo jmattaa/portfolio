@@ -10,6 +10,7 @@
     --color-black: #000000;
 
     --color-red: #f87171;
+    --color-blue: #3b82f6;
     --color-green: #22c55e;
 
     --drop-shadow-glow:
@@ -76,5 +77,32 @@ html {
 }
 
 mark {
-    @apply bg-palette-5 text-palette-1 px-1;
+    @apply relative font-semibold px-1.5 text-palette-1;
+    border-radius: 0.25rem;
+    background: linear-gradient(270deg, var(--color-red), var(--color-blue), var(--color-red));
+    background-size: 600% 100%;
+    animation: gradientMove 10s linear infinite;
+
+    /* when css random works then do:
+     * animation-delay: random(0s, 2s);
+     */
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 600% 0%;
+    }
+}
+
+
+a {
+    @apply underline decoration-wavy transition-all duration-300;
+}
+
+a:hover {
+    @apply decoration-red;
 }

@@ -3,7 +3,7 @@ import { Project } from "../interfaces";
 
 const ProjectCard = ({ project }: { project: Project }) => {
     return (
-        <Link to={project.url} className="block">
+        <Link to={project.url} className="block no-underline!">
             <div
                 className="p-6 bg-palette-3/20 rounded-2xl m-6 text-palette-5
                            transition-transform duration-300 hover:bg-palette-4/40

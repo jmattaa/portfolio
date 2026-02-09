@@ -26,18 +26,7 @@ const Nav = () => {
                     className={`relative text-palette-4
                                 rounded
                                 p-1 hover:text-palette-5       
-                                duration-500
                                 transition-all
-                                after:content-[""] 
-                                after:flex after:absolute
-                                after:bottom-0 after:left-0 
-                                after:w-full after:h-[.1em] 
-                                after:bg-palette-5 after:opacity-0 
-                                after:scale-x-0 after:origin-left
-                                after:transition-[opacity,transform]
-                                after:duration-300 
-                                hover:after:opacity-100
-                                hover:after:scale-x-1
                                 ${isActive(url) ? "bg-palette-5 text-palette-1!" : ""}`}
                     onMouseEnter={(e) => {
                         const target = e.target as HTMLElement;
@@ -67,7 +56,7 @@ const Nav = () => {
         <nav className="sticky lg:fixed top-0 left-0 z-50 w-full 
                         shadow-md bg-palette-2/20 backdrop-blur-xs p-3 lg:w-1/4
                         lg:bg-palette-1/0 lg:shadow-none lg:top-8 lg:p-0
-                        lg:backdrop-blur-none">
+                        lg:backdrop-blur-none [&_a]:no-underline!">
             <div
                 className="flex justify-around items-center p-3 lg:flex-col 
                             lg:space-y-4">
